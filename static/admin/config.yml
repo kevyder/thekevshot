@@ -6,16 +6,16 @@ media_folder: static/img
 public_folder: /img
 
 collections:
-  - name: 'blog'
-    label: 'Blog'
-    folder: 'content/blog'
+  - name: 'gallery'
+    label: 'Gallery'
+    folder: 'content/gallery'
     format: 'frontmatter'
     create: true
     slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
     editor:
-      preview: false
+      preview: true
     fields:
       - { label: 'Title', name: 'title', widget: 'string' }
-      - { label: 'Publish Date', name: 'date', widget: 'datetime' }
-      - { label: 'Description', name: 'description', widget: 'string' }
-      - { label: 'Body', name: 'body', widget: 'markdown' }
+      - { label: 'Date', name: 'date', widget: 'datetime' }
+      - { label: 'Alt', name: 'alt', widget: 'string' }
+      - { label: 'Photograph', name: 'photograph', widget: 'image'}

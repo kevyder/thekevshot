@@ -4,7 +4,7 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'thekevshot',
+    title: 'Kevin Rodríguez - street photography',
     htmlAttrs: {
       lang: 'en'
     },
@@ -22,6 +22,9 @@ export default {
   css: [
   ],
 
+  script: [
+  ],
+
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
   ],
@@ -31,7 +34,15 @@ export default {
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
+    '@nuxtjs/fontawesome',
   ],
+
+  fontawesome: {
+    icons: {
+      solid: true,
+      brands: true,
+    }
+  },
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
