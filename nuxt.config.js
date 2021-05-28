@@ -4,18 +4,18 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'Kevin Rodríguez - street photography',
+    title: 'Kevin Rodríguez - Street Photography | thekevshot',
     htmlAttrs: {
       lang: 'en'
     },
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' }
+      { hid: 'description', name: 'description', content: 'Kevin Rodríguez - Street Photography | thekevshot' }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
-    ]
+    ],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -27,6 +27,7 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+    {src: '~/plugins/splide.client.js', ssr:false}
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -35,12 +36,19 @@ export default {
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
     '@nuxtjs/fontawesome',
+    '@nuxtjs/google-fonts',
   ],
 
   fontawesome: {
     icons: {
       solid: true,
       brands: true,
+    }
+  },
+
+  googleFonts: {
+    families: {
+      Inconsolata: [500],
     }
   },
 
