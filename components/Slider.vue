@@ -1,26 +1,14 @@
 <template>
   <div id="gallery">
     <splide :options="primaryOptions" ref="primary">
-      <splide-slide>
-        <img src="https://picsum.photos/400/600" alt="" />
-      </splide-slide>
-      <splide-slide>
-        <img src="https://picsum.photos/400/600" alt="" />
-      </splide-slide>
-      <splide-slide>
-        <img src="https://picsum.photos/400/600" alt="" />
+      <splide-slide v-for="image of images" :key="image.slug">
+        <img :src="image.photograph" :alt="image.alt" />
       </splide-slide>
     </splide>
 
     <splide :options="secondaryOptions" ref="secondary" id="secondary">
-      <splide-slide>
-        <img src="https://picsum.photos/400/600" alt="" />
-      </splide-slide>
-      <splide-slide>
-        <img src="https://picsum.photos/400/600" alt="" />
-      </splide-slide>
-      <splide-slide>
-        <img src="https://picsum.photos/400/600" alt="" />
+      <splide-slide v-for="image of images" :key="image.slug">
+        <img :src="image.photograph" :alt="image.alt" />
       </splide-slide>
     </splide>
   </div>
@@ -37,6 +25,12 @@
 </style>
 <script>
 export default {
+  async asyncData({ $content }) {
+    const images = await $content("gallery").fetch();
+    return {
+      images,
+    };
+  },
   data() {
     return {
       primaryOptions: {

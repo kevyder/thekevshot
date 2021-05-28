@@ -39,6 +39,7 @@ export default {
     '@nuxtjs/google-fonts',
   ],
 
+
   fontawesome: {
     icons: {
       solid: true,
@@ -51,9 +52,13 @@ export default {
       Inconsolata: [500],
     }
   },
+  content: {
+    // Options
+  },
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
+    '@nuxt/content'
   ],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
