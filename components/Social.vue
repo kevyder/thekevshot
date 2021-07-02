@@ -6,6 +6,11 @@
       </a>
     </li>
     <li>
+      <a href="https://www.instagram.com/thekevshot/" class="social-icon">
+        <font-awesome-icon :icon="['fab', 'facebook']"/>
+      </a>
+    </li>
+    <li>
       <a href="https://www.redbubble.com/people/thekevshot/" class="social-icon">
         <font-awesome-icon :icon="['fas', 'shopping-cart']"/>
       </a>

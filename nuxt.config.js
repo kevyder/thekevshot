@@ -52,14 +52,17 @@ export default {
       Inconsolata: [500],
     }
   },
-  content: {
-    // Options
-  },
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
-    '@nuxt/content'
+    '@nuxt/content',
   ],
+
+  content: {
+    // Options
+    apiPrefix: 'content-api',
+    dir: 'content'
+  },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
