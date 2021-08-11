@@ -1,66 +1,45 @@
 <template>
-  <div class="main">
-    <div class="left">
-      <h1>Kevin Rodríguez - Street Photography</h1>
-      <social />
-    </div>
-    <div class="right">
-      <div id="gallery">
-        <splide :options="primaryOptions" ref="primary">
-          <splide-slide v-for="image of images" :key="image.slug">
-            <img :src="image.photograph" :alt="image.alt" />
-          </splide-slide>
-        </splide>
+  <b-container class="main h-100" fluid>
+    <b-row class="h-100 justify-content-center align-items-center">
+      <b-col md="5">
+        <h1 class="main-title">Kevin Rodríguez - Street Photography</h1>
+        <social />
+      </b-col>
+      <b-col md="7">
+        <div id="gallery">
+          <splide :options="primaryOptions" ref="primary">
+            <splide-slide v-for="image of images" :key="image.slug">
+              <img :src="image.photograph" :alt="image.alt" />
+            </splide-slide>
+          </splide>
 
-        <splide :options="secondaryOptions" ref="secondary" id="secondary">
-          <splide-slide v-for="image of images" :key="image.slug">
-            <img :src="image.photograph" :alt="image.alt" />
-          </splide-slide>
-        </splide>
-      </div>
-    </div>
-  </div>
+          <splide :options="secondaryOptions" ref="secondary" id="secondary-gallery">
+            <splide-slide v-for="image of images" :key="image.slug">
+              <img :src="image.photograph" :alt="image.alt" />
+            </splide-slide>
+          </splide>
+        </div>
+      </b-col>
+    </b-row>
+  </b-container>
 </template>
 
 <style>
-.main {
-  height: 100%;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  width: 100%;
-}
 
-.main .left {
-  width: 40%;
-}
-
-.main .right {
-  width: 60%;
-}
-
-.main .left,
-.main .right {
-  display: flex;
-  height: 100%;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.main .left h1 {
-  font-family: "Inconsolata", monospace;
-  font-size: 1.8rem;
-  font-weight: 500;
+.main-title {
+  font-family: 'Rufina', serif;
+  font-size: 2.2rem;
+  font-weight: 700;
   text-align: center;
-  color: #000000;
+  color: #000;
 }
 
 #gallery {
   width: 70%;
+  margin: 0 15%;
 }
 
-#secondary {
+#secondary-gallery {
   margin-top: 1rem;
 }
 </style>

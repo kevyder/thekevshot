@@ -1,70 +1,59 @@
 export default {
   // Target: https://go.nuxtjs.dev/config-target
-  target: 'static',
+  target: "static",
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'Kevin Rodríguez - Street Photography | thekevshot',
+    title: "Kevin Rodríguez - Street Photography | thekevshot",
     htmlAttrs: {
-      lang: 'en'
+      lang: "en"
     },
     meta: [
-      { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: 'Kevin Rodríguez - Street Photography | thekevshot' }
+      { charset: "utf-8" },
+      { name: "viewport", content: "width=device-width, initial-scale=1" },
+      {
+        hid: "description",
+        name: "description",
+        content: "Kevin Rodríguez - Street Photography | thekevshot"
+      }
     ],
-    link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
-    ],
+    link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }]
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: [
-  ],
+  css: [],
 
-  script: [
-  ],
+  script: [],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [
-    {src: '~/plugins/splide.client.js', ssr:false}
-  ],
+  plugins: [{ src: "~/plugins/splide.client.js", ssr: false }],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
-  buildModules: [
-    '@nuxtjs/fontawesome',
-    '@nuxtjs/google-fonts',
-  ],
-
-
-  fontawesome: {
-    icons: {
-      solid: true,
-      brands: true,
-    }
-  },
+  buildModules: ["@nuxtjs/google-fonts"],
 
   googleFonts: {
     families: {
-      Inconsolata: [500],
+      Rufina: [700],
+      'PT+Serif': [400]
     }
   },
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: [
-    '@nuxt/content',
-  ],
+  modules: ["@nuxt/content", "bootstrap-vue/nuxt"],
+
+  bootstrapVue: {
+    componentPlugins: ["LayoutPlugin"]
+  },
 
   content: {
     // Options
-    apiPrefix: 'content-api',
-    dir: 'content'
+    apiPrefix: "content-api",
+    dir: "content"
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {
-  }
-}
+  build: {}
+};

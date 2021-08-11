@@ -2,17 +2,17 @@
   <ul class="social">
     <li>
       <a href="https://www.instagram.com/thekevshot/" class="social-icon">
-        <font-awesome-icon :icon="['fab', 'instagram']"/>
+        <p>Instagram</p>
       </a>
     </li>
     <li>
       <a href="https://www.instagram.com/thekevshot/" class="social-icon">
-        <font-awesome-icon :icon="['fab', 'facebook']"/>
+        <p>Twitter</p>
       </a>
     </li>
     <li>
       <a href="https://www.redbubble.com/people/thekevshot/" class="social-icon">
-        <font-awesome-icon :icon="['fas', 'shopping-cart']"/>
+        <p>Facebook</p>
       </a>
     </li>
   </ul>
@@ -20,16 +20,17 @@
 
 <style>
 .social {
-  width: 10%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  margin-top: 1rem;
+  text-align: center;
 }
 
-.social li {
-  font-size: 2rem; }
-
 .social li a {
-  color: #000; }
+  font-size: 1.2rem;
+  color: #000;
+  font-family: 'PT Serif', serif;
+  text-decoration: underline;
+}
+
+.social li p {
+  margin: 0.5rem 0;
+}
 </style>
