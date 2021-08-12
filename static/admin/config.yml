@@ -6,9 +6,9 @@ media_folder: static/img
 public_folder: /img
 
 collections:
-  - name: 'gallery'
-    label: 'Gallery'
-    folder: 'content/gallery'
+  - name: 'b&w'
+    label: 'Black and White'
+    folder: 'content/b&w'
     format: 'frontmatter'
     create: true
     slug: '{{year}}-{{month}}-{{day}}-{{slug}}'

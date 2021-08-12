@@ -26,7 +26,9 @@ export default {
   script: [],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [{ src: "~/plugins/splide.client.js", ssr: false }],
+  plugins: [
+    { src: "~/plugins/splide.client.js", ssr: false },
+  ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -36,8 +38,10 @@ export default {
 
   googleFonts: {
     families: {
-      Rufina: [700],
-      'PT+Serif': [400]
+      "Cormorant+Garamond": {
+        ital: [700]
+      },
+      "Fira+Sans": [200, 600]
     }
   },
 
@@ -45,7 +49,7 @@ export default {
   modules: ["@nuxt/content", "bootstrap-vue/nuxt"],
 
   bootstrapVue: {
-    componentPlugins: ["LayoutPlugin"]
+    componentPlugins: ["LayoutPlugin", "OverlayPlugin"]
   },
 
   content: {

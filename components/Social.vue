@@ -25,12 +25,12 @@
 
 .social li a {
   font-size: 1.2rem;
-  color: #000;
-  font-family: 'PT Serif', serif;
+  color: #666;
   text-decoration: underline;
 }
 
 .social li p {
   margin: 0.5rem 0;
+  font-weight: 600;
 }
 </style>
