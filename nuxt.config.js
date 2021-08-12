@@ -26,23 +26,25 @@ export default {
   script: [],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [
-    { src: "~/plugins/splide.client.js", ssr: false },
-  ],
+  plugins: [{ src: "~/plugins/splide.client.js", ssr: false }],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
-  buildModules: ["@nuxtjs/google-fonts"],
+  buildModules: ["@nuxtjs/google-fonts", "@nuxtjs/google-analytics"],
 
   googleFonts: {
     families: {
       "Cormorant+Garamond": {
         ital: [700]
       },
-      "Fira+Sans": [200, 600],
+      "Fira+Sans": [200, 600]
     }
+  },
+
+  googleAnalytics: {
+    id: 'UA-78422400-5'
   },
 
   // Modules: https://go.nuxtjs.dev/config-modules
