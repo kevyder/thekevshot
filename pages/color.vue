@@ -79,7 +79,7 @@ export default {
       blur: "2px",
       primaryOptions: {
         type: "fade",
-        heightRatio: 0.66,
+        heightRatio: 1,
         pagination: false,
         arrows: false,
         cover: true,
