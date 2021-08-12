@@ -5,13 +5,13 @@
         <p>Instagram</p>
       </a>
     </li>
-    <li>
+    <!-- <li>
       <a href="https://www.instagram.com/thekevshot/" class="social-icon">
         <p>Twitter</p>
       </a>
-    </li>
+    </li> -->
     <li>
-      <a href="https://www.redbubble.com/people/thekevshot/" class="social-icon">
+      <a href="https://www.facebook.com/thekevshot-104180201805462" class="social-icon">
         <p>Facebook</p>
       </a>
     </li>

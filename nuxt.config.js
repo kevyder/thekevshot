@@ -42,7 +42,6 @@ export default {
         ital: [700]
       },
       "Fira+Sans": [200, 600],
-      "Atkinson+Hyperlegible": [700],
     }
   },
 

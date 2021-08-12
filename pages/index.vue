@@ -105,7 +105,15 @@ export default {
     this.show = false;
   },
   async asyncData({ $content }) {
-    const images = await $content("b&w").fetch();
+    var images = await $content("b&w").fetch();
+    var currentIndex = images.length,  randomIndex;
+    while (0 !== currentIndex) {
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--;
+
+      [images[currentIndex], images[randomIndex]] = [
+        images[randomIndex], images[currentIndex]];
+    }
     return {
       images,
     };

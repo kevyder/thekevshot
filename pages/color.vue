@@ -28,7 +28,10 @@
               id="secondary-gallery"
             >
               <splide-slide v-for="image of images" :key="image.slug">
-                <img :src="image.photograph" :alt="image.name + 'by the kevshot'" />
+                <img
+                  :src="image.photograph"
+                  :alt="image.name + 'by the kevshot'"
+                />
               </splide-slide>
             </splide>
           </div>
@@ -41,26 +44,14 @@
 <style>
 .main-title,
 .type-title {
-  font-family: 'Atkinson Hyperlegible', sans-serif;
+  font-family: "Cormorant Garamond", serif;
   font-weight: 700;
   text-align: center;
-  background: linear-gradient(
-    to right,
-    #ef5350,
-    #f48fb1,
-    #7e57c2,
-    #2196f3,
-    #26c6da,
-    #43a047,
-    #f9a825,
-    #ff5722
-  );
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #000;
 }
 
 .main-title {
-  font-size: 2.5rem;
+  font-size: 3rem;
 }
 
 .type-title {
@@ -118,7 +109,18 @@ export default {
     this.show = false;
   },
   async asyncData({ $content }) {
-    const images = await $content("b&w").fetch();
+    var images = await $content("color").fetch();
+    var currentIndex = images.length,
+      randomIndex;
+    while (0 !== currentIndex) {
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--;
+
+      [images[currentIndex], images[randomIndex]] = [
+        images[randomIndex],
+        images[currentIndex],
+      ];
+    }
     return {
       images,
     };

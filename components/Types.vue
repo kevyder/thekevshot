@@ -1,8 +1,8 @@
 <template>
   <ul id="types">
-    <li><a href="#">B&W</a></li>
+    <li><a href="/">B&W</a></li>
     <li>&#8226;</li>
-    <li><a href="#">Color</a></li>
+    <li><a href="/color">Color</a></li>
     <li>&#8226;</li>
     <li><a href="#">Film</a></li>
   </ul>
