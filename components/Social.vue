@@ -11,7 +11,7 @@
       </a>
     </li> -->
     <li>
-      <a href="https://www.facebook.com/thekevshot-104180201805462" class="social-icon">
+      <a href="https://www.facebook.com/thekevshot/" class="social-icon">
         <p>Facebook</p>
       </a>
     </li>
@@ -24,7 +24,7 @@
 }
 
 .social li a {
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   color: #666;
   text-decoration: underline;
 }

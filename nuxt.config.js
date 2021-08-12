@@ -4,7 +4,7 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: "Kevin Rodríguez - Street Photography | thekevshot",
+    title: "Street Photography by Kevin Rodríguez | thekevshot",
     htmlAttrs: {
       lang: "en"
     },
@@ -36,9 +36,7 @@ export default {
 
   googleFonts: {
     families: {
-      "Cormorant+Garamond": {
-        ital: [700]
-      },
+      "Oswald": [700],
       "Fira+Sans": [200, 600]
     }
   },

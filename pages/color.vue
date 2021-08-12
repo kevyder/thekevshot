@@ -2,7 +2,7 @@
   <b-container class="main h-100" fluid>
     <b-row class="h-100 justify-content-center align-items-center">
       <b-col md="5">
-        <h1 class="main-title">Kevin Rodríguez - Street Photography</h1>
+        <h1 class="main-title">THEKEVSHOT - Street Photography</h1>
         <types />
         <social />
       </b-col>
@@ -15,7 +15,6 @@
           rounded="sm"
         >
           <div id="gallery">
-            <h2 class="type-title">Color</h2>
             <splide :options="primaryOptions" ref="primary">
               <splide-slide v-for="image of images" :key="image.slug">
                 <img :src="image.photograph" :alt="image.alt" />
@@ -42,30 +41,17 @@
 </template>
 
 <style>
-.main-title,
-.type-title {
-  font-family: "Cormorant Garamond", serif;
+.main-title {
+  font-family: 'Oswald', sans-serif;
   font-weight: 700;
   text-align: center;
   color: #000;
-}
-
-.main-title {
   font-size: 3rem;
-}
-
-.type-title {
-  font-size: 2rem;
-  margin: 1rem auto;
 }
 
 #gallery {
   width: 70%;
   margin: 0 15%;
-}
-
-#secondary-gallery {
-  margin-top: 1rem;
 }
 </style>
 

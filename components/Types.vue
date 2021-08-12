@@ -12,6 +12,7 @@
 #types {
   text-align: center;
   margin: 3rem auto;
+  font-size: 1.5rem;
 }
 #types li{
   color: #333;
