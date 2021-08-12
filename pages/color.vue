@@ -88,7 +88,7 @@ export default {
       secondaryOptions: {
         rewind: true,
         fixedWidth: 100,
-        fixedHeight: 64,
+        fixedHeight: 100,
         isNavigation: true,
         gap: 10,
         focus: "center",
