@@ -1,17 +1,17 @@
 <template lang="html">
   <ul class="social">
     <li>
-      <a href="https://www.instagram.com/thekevshot/" class="social-icon">
+      <a href="https://www.instagram.com/thekevshot/">
         <p>Instagram</p>
       </a>
     </li>
-    <!-- <li>
-      <a href="https://www.instagram.com/thekevshot/" class="social-icon">
+    <li>
+      <a href="https://twitter.com/thekevshot/">
         <p>Twitter</p>
       </a>
-    </li> -->
+    </li>
     <li>
-      <a href="https://www.facebook.com/thekevshot/" class="social-icon">
+      <a href="https://www.facebook.com/thekevshot/">
         <p>Facebook</p>
       </a>
     </li>
