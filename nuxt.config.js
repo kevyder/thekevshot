@@ -14,7 +14,7 @@ export default {
       {
         hid: "description",
         name: "description",
-        content: "Kevin Rodríguez - Street Photography | thekevshot"
+        content: "My name is Kevin Rodríguez and I'm based in Bogotá D.C - Colombia. i do street photography as hobbie since 2020, i love good compositions, i try tell stories in my photographs and get interesting moments with my camera. | thekevshot"
       }
     ],
     link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }]
