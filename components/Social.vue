@@ -6,6 +6,11 @@
       </a>
     </li>
     <li>
+      <a href="https://www.flickr.com/photos/thekevshot/">
+        <p>Flickr</p>
+      </a>
+    </li>
+    <li>
       <a href="https://twitter.com/thekevshot/">
         <p>Twitter</p>
       </a>
