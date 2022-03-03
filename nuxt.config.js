@@ -4,7 +4,7 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: "Street Photography by Kevin Rodríguez | thekevshot",
+    title: "Photographs by Kevin Rodríguez | thekevshot",
     htmlAttrs: {
       lang: "en"
     },
@@ -14,7 +14,7 @@ export default {
       {
         hid: "description",
         name: "description",
-        content: "My name is Kevin Rodríguez and I'm based in Bogotá D.C - Colombia. i do street photography as hobbie since 2020, i love good compositions, i try tell stories in my photographs and get interesting moments with my camera. | thekevshot"
+        content: "Kevin Rodríguez is an amateur photographer based in Bogotá D.C - Colombia | thekevshot"
       }
     ],
     link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }]

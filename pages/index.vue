@@ -2,9 +2,9 @@
   <b-container class="main h-100" fluid>
     <b-row class="h-100 justify-content-center align-items-center">
       <b-col md="5">
-        <h1 class="main-title">THEKEVSHOT - Street Photography</h1>
-        <types />
+        <h1 class="main-title">KEVIN RODRÍGUEZ - THEKEVSHOT</h1>
         <social />
+        <!-- <genre /> -->
       </b-col>
       <b-col md="7">
         <b-overlay
@@ -92,7 +92,7 @@ export default {
     this.show = false;
   },
   async asyncData({ $content }) {
-    var images = await $content("b&w").fetch();
+    var images = await $content("street-photography").fetch();
     var currentIndex = images.length,  randomIndex;
     while (0 !== currentIndex) {
       randomIndex = Math.floor(Math.random() * currentIndex);
