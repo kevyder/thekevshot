@@ -26,4 +26,10 @@
   text-decoration: none;
   font-weight: 200;
 }
+
+#social li a:hover{
+  color: #333;
+  text-decoration: underline;
+  font-weight: 200;
+}
 </style>
