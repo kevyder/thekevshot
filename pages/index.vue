@@ -12,8 +12,7 @@
           :variant="variant"
           :opacity="opacity"
           :blur="blur"
-          rounded="sm"
-        >
+          rounded="sm">
           <div id="gallery">
             <splide :options="primaryOptions" ref="primary">
               <splide-slide v-for="image of images" :key="image.slug">
@@ -38,8 +37,9 @@
 </template>
 
 <style>
+
 .main-title {
-  font-family: "Oswald", sans-serif;
+  font-family: 'Oswald', sans-serif;
   font-weight: 700;
   text-align: center;
   color: #000;
@@ -57,9 +57,9 @@ export default {
   data() {
     return {
       show: true,
-      variant: "white",
+      variant: 'white',
       opacity: 1,
-      blur: "2px",
+      blur: '2px',
       primaryOptions: {
         type: "fade",
         heightRatio: 1,
@@ -92,7 +92,15 @@ export default {
     this.show = false;
   },
   async asyncData({ $content }) {
-    var images = await $content("street-photography").fetch();
+    var images = await $content("street-photography").limit(12).fetch();
+    var currentIndex = images.length,  randomIndex;
+    while (0 !== currentIndex) {
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--;
+
+      [images[currentIndex], images[randomIndex]] = [
+        images[randomIndex], images[currentIndex]];
+    }
     return {
       images,
     };
