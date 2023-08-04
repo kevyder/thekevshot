@@ -1,5 +1,7 @@
 # thekevshot
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/75d505d0-e708-4bfb-a2e3-984484ad7b89/deploy-status)](https://app.netlify.com/sites/thekevshot/deploys)
+
 ## Build Setup
 
 ```bash
