@@ -53,11 +53,6 @@ export default {
     dir: "content"
   },
 
-  bootstrapVue: {
-    // Install the `IconsPlugin` plugin (in addition to `BootstrapVue` plugin)
-    icons: true
-  },
-
   'google-gtag': {
     id: "G-9JSDM5R8DD",
     debug: false
