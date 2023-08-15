@@ -25,14 +25,18 @@ export default {
 
   script: [],
 
+  devServerHandlers: [],
+
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [{ src: "~/plugins/splide.client.js", ssr: false }],
+  plugins: [
+    { src: '~/plugins/vue-stack-grid', mode: 'client' },
+  ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
-  buildModules: ["@nuxtjs/google-fonts", "@nuxtjs/google-analytics"],
+  buildModules: ["@nuxtjs/google-fonts"],
 
   googleFonts: {
     families: {
@@ -40,22 +44,23 @@ export default {
       "Fira+Sans": [200, 600]
     }
   },
-
-  googleAnalytics: {
-    id: 'UA-78422400-5'
-  },
-
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: ["@nuxt/content", "bootstrap-vue/nuxt"],
-
-  bootstrapVue: {
-    componentPlugins: ["LayoutPlugin", "OverlayPlugin"]
-  },
+  modules: ["@nuxt/content", "bootstrap-vue/nuxt", "@nuxtjs/google-gtag"],
 
   content: {
     // Options
     apiPrefix: "content-api",
     dir: "content"
+  },
+
+  bootstrapVue: {
+    // Install the `IconsPlugin` plugin (in addition to `BootstrapVue` plugin)
+    icons: true
+  },
+
+  'google-gtag': {
+    id: "G-9JSDM5R8DD",
+    debug: false
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
