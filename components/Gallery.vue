@@ -1,6 +1,6 @@
 <template>
   <div id="gallery">
-    <stack :column-min-width="450" :gutter-width="10" :gutter-height="10">
+    <stack :column-min-width="450" :monitor-images-loaded="true" :gutter-width="10" :gutter-height="10">
       <stack-item v-for="image of images" :key="image.slug">
         <b-img-lazy v-b-modal="image.slug" v-bind="mainProps" :src="image.photograph" :alt="image.alt"></b-img-lazy>
         <b-modal :id="image.slug" size="lg" hide-footer >
