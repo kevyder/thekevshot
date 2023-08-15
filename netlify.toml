@@ -1,0 +1,4 @@
+[build.environment]
+
+[context.production]
+    command = "mv robots-production.txt robots.txt"
