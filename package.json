@@ -6,7 +6,7 @@
     "dev": "nuxt",
     "build": "nuxt build || exit 0",
     "start": "nuxt start",
-    "generate": "nuxt build && nuxt export"
+    "generate": "nuxt generate"
   },
   "dependencies": {
     "@nuxt/content": "^1.14.0",

@@ -1,6 +1,6 @@
 export default {
   // Target: https://go.nuxtjs.dev/config-target
-  target: "server",
+  target: "static",
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -29,7 +29,7 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    { src: '~/plugins/vue-stack-grid', mode: 'client' },
+    { src: '~/plugins/vue-stack-grid.client.js', ssr: false},
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -64,6 +64,8 @@ export default {
   },
 
   sitemap: {
+    hostname: process.env.HOSTNAME,
+    gzip: true,
     exclude: [
       "/admin",
       "/admin/**"
