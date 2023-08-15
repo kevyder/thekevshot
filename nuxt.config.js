@@ -45,7 +45,7 @@ export default {
     }
   },
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: ["@nuxt/content", "bootstrap-vue/nuxt", "@nuxtjs/google-gtag"],
+  modules: ["@nuxt/content", "bootstrap-vue/nuxt", "@nuxtjs/google-gtag", "@nuxtjs/sitemap"],
 
   content: {
     // Options
@@ -61,6 +61,13 @@ export default {
   'google-gtag': {
     id: "G-9JSDM5R8DD",
     debug: false
+  },
+
+  sitemap: {
+    exclude: [
+      "/admin",
+      "/admin/**"
+    ]
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
