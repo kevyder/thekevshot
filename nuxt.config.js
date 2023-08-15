@@ -29,7 +29,7 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    { src: '~/plugins/vue-grid-responsive.js', ssr: true}
+    { src: '~/plugins/vue-grid-responsive.js', mode: 'client'}
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
