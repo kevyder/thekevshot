@@ -29,7 +29,7 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    { src: '~/plugins/vue-grid-responsive.js', mode: 'client'}
+    { src: '~/plugins/vue-stack-grid.client.js'}
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -45,7 +45,12 @@ export default {
     }
   },
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: ["@nuxt/content", "bootstrap-vue/nuxt", "@nuxtjs/google-gtag", "@nuxtjs/sitemap"],
+  modules: [
+    "@nuxt/content",
+    "bootstrap-vue/nuxt",
+    "@nuxtjs/google-gtag",
+    "@nuxtjs/sitemap"
+  ],
 
   content: {
     // Options

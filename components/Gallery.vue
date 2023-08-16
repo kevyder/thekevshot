@@ -1,20 +1,20 @@
 <template>
   <div id="gallery">
-    <row container :gutter="10">
-      <column v-for="image of images" :xs="12" :md="4" :lg="4" :key="image.slug">
+    <stack :monitor-images-loaded="true" :column-min-width="450" :gutter-width="10" :gutter-height="10">
+      <stack-item v-for="image of images" :key="image.slug">
         <b-img-lazy v-b-modal="image.slug" v-bind="mainProps" :src="image.photograph" :alt="`${image.title} by thekevshot`"></b-img-lazy>
         <b-modal :id="image.slug" size="lg" hide-footer >
-          <b-img-lazy fluid-grow v-bind="mainProps" :src="image.photograph" :alt="`${image.title} by thekevshot`"></b-img-lazy>
+          <b-img-lazy v-bind="mainProps" :src="image.photograph" :alt="`${image.title} by thekevshot`"></b-img-lazy>
         </b-modal>
-      </column>
-    </row>
+      </stack-item>
+    </stack>
   </div>
 </template>
 
 <style>
 #gallery {
   margin: 5% 0;
-  width: 80%;
+  width: 75%;
 }
 
 #gallery .gallery-image {
