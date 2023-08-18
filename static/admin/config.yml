@@ -6,9 +6,9 @@ media_folder: static/img
 public_folder: /img
 
 collections:
-  - name: 'street photography'
-    label: 'Street Photography'
-    folder: 'content/street-photography'
+  - name: 'home'
+    label: 'Home - Street Photography'
+    folder: 'content/home'
     format: 'frontmatter'
     create: true
     slug: '{{year}}-{{month}}-{{day}}-{{slug}}'

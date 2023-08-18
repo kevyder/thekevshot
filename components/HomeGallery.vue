@@ -36,7 +36,7 @@ export default {
     };
   },
   async fetch() {
-    this.images = await this.$content("street-photography").fetch();
+    this.images = await this.$content("home").fetch();
   },
 };
 </script>
