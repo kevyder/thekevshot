@@ -4,7 +4,7 @@
       <stack-item v-for="image of images" :key="image.slug">
         <nuxt-img v-b-modal="image.slug" :src="image.photograph" :alt="`${image.title} by thekevshot`" class="gallery-image" format="webp" load="lazy" preload />
         <b-modal :id="image.slug" size="lg" hide-footer >
-          <nuxt-img class="modal-image" v-b-modal="image.slug" :src="image.photograph" :alt="`${image.title} by thekevshot`" format="webp" placeholder />
+          <nuxt-img class="modal-image" v-b-modal="image.slug" :src="image.photograph" :alt="`${image.title} by thekevshot`" format="webp" load="lazy" sizes="sm:100vw" preload placeholder />
         </b-modal>
       </stack-item>
     </stack>
