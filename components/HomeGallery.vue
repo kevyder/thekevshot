@@ -30,7 +30,9 @@ export default {
     };
   },
   async fetch() {
-    this.images = await this.$content("home").fetch();
+    let sortedImages = await this.$content("home").fetch();
+    let shuffledImages = sortedImages.sort((a, b) => 0.5 - Math.random());
+    this.images  = shuffledImages;
   },
 };
 </script>
