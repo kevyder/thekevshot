@@ -36,7 +36,7 @@ export default {
   components: true,
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
-  buildModules: ["@nuxtjs/google-fonts"],
+  buildModules: ["@nuxtjs/google-fonts", "@nuxt/image"],
 
   googleFonts: {
     families: {
@@ -44,6 +44,12 @@ export default {
       "Fira+Sans": [200, 600]
     }
   },
+
+  image: {
+    provider: 'netlify',
+    dir: 'static/img'
+  },
+
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     "@nuxt/content",

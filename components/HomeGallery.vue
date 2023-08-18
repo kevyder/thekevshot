@@ -2,9 +2,9 @@
   <div id="gallery">
     <stack :monitor-images-loaded="true" :column-min-width="450" :gutter-width="10" :gutter-height="10">
       <stack-item v-for="image of images" :key="image.slug">
-        <b-img-lazy v-b-modal="image.slug" v-bind="mainProps" :src="image.photograph" :alt="`${image.title} by thekevshot`"></b-img-lazy>
+        <nuxt-img v-b-modal="image.slug" :src="image.photograph" :alt="`${image.title} by thekevshot`" class="gallery-image" format="webp" load="lazy" preload />
         <b-modal :id="image.slug" size="lg" hide-footer >
-          <b-img-lazy v-bind="mainProps" :src="image.photograph" :alt="`${image.title} by thekevshot`"></b-img-lazy>
+          <nuxt-img class="modal-image" v-b-modal="image.slug" :src="image.photograph" :alt="`${image.title} by thekevshot`" format="webp" placeholder />
         </b-modal>
       </stack-item>
     </stack>
@@ -17,7 +17,7 @@
   width: 75%;
 }
 
-#gallery .gallery-image {
+#gallery .gallery-image, .modal-image {
   width: 100%;
 }
 </style>
@@ -26,13 +26,7 @@
 export default {
   data() {
     return {
-      images: null,
-      mainProps: {
-          blank: true,
-          fluidGrow: true,
-          blankColor: '#bbb',
-          class: 'gallery-image'
-      }
+      images: null
     };
   },
   async fetch() {
