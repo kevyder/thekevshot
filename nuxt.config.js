@@ -39,6 +39,7 @@ export default {
   buildModules: ["@nuxtjs/google-fonts", "@nuxt/image"],
 
   googleFonts: {
+    display: "swap",
     families: {
       "Oswald": [700],
       "Fira+Sans": [200, 600]
