@@ -49,8 +49,18 @@ export default {
   },
 
   image: {
-    provider: 'netlify',
-    dir: 'static/img'
+    provider: 'static',
+    presets: {
+      gallery: {
+        modifiers: {
+          format: 'webp',
+          fit: 'cover',
+          quality: '90',
+          width: 1620,
+          height: 1080
+        }
+      }
+    }
   },
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -69,7 +79,12 @@ export default {
 
   bootstrapVue: {
     // Install the `IconsPlugin` plugin (in addition to `BootstrapVue` plugin)
-    icons: false
+    icons: false,
+    componentPlugins: [
+      'LayoutPlugin',
+      'ModalPlugin',
+      'NavbarPlugin'
+    ],
   },
 
   'google-gtag': {
@@ -90,9 +105,6 @@ export default {
   build: {
     minimize: true,
     minifyCSS: true,
-    minifyJS: true,
-    babel: {
-      compact: true
-    }
+    minifyJS: true
   }
 };
