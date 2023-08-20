@@ -50,17 +50,7 @@ export default {
 
   image: {
     provider: 'netlify',
-    presets: {
-      gallery: {
-        modifiers: {
-          format: 'webp',
-          fit: 'cover',
-          quality: '90',
-          width: 1620,
-          height: 1080
-        }
-      }
-    }
+
   },
 
   // Modules: https://go.nuxtjs.dev/config-modules
