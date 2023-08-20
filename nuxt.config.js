@@ -49,7 +49,7 @@ export default {
   },
 
   image: {
-    provider: 'static',
+    provider: 'netlify',
     presets: {
       gallery: {
         modifiers: {
