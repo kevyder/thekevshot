@@ -1,9 +1,15 @@
 <template>
 <header class="header">
-  <h1 class="main-title">
-    <a href="/">Kevin Rodríguez | thekevshot</a>
-  </h1>
+  <h1 class="main-title"><a href="/">Kevin Rodríguez | thekevshot</a></h1>
   <b-navbar toggleable="lg" type="white" variant="white" class="nav-bar text-center">
+    <b-navbar-brand id="navbar-brand" href="/">Kevin Rodríguez - Photographer</b-navbar-brand>
+    <b-navbar-toggle target="nav-collapse">
+      <template #default="{ expanded }">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line" style="margin-bottom: 0;"></span>
+      </template>
+    </b-navbar-toggle>
     <b-collapse id="nav-collapse" is-nav>
       <b-navbar-nav class="mx-auto">
         <!-- <b-nav-item-dropdown text="Gallery" left>
@@ -24,6 +30,10 @@
 <style>
 .header {
   padding: 2.5rem 0rem;
+}
+
+.header #navbar-brand {
+  display: none;
 }
 
 .header .main-title {
@@ -57,5 +67,40 @@
 .header .nav-bar .nav-item a:hover {
   color: #666;
   text-decoration: underline;
+}
+
+@media (max-width: 992px) {
+
+  .header .main-title {
+    display:none
+  }
+
+  .header #navbar-brand {
+    display: block;
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #000;
+    text-transform: uppercase;
+  }
+
+  .header #navbar-brand:hover {
+    color: #666;
+    text-decoration: underline;
+  }
+
+  .navbar-toggler{
+    width: 50px;
+    height: 50px;
+    background-color: #000000;
+    border:none;
+  }
+  .navbar-toggler .line{
+      width: 100%;
+      float: right;
+      height: 2px;
+      background-color: #fff;
+      margin-bottom: 5px;
+  }
 }
 </style>
