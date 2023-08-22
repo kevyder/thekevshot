@@ -2,7 +2,7 @@
 <header class="header">
   <h1 class="main-title"><a href="/">Kevin Rodríguez | thekevshot</a></h1>
   <b-navbar toggleable="lg" type="white" variant="white" class="nav-bar text-center">
-    <b-navbar-brand id="navbar-brand" href="/">Kevin Rodríguez - Photographer</b-navbar-brand>
+    <b-navbar-brand id="navbar-brand" href="/">Kevin Rodríguez</b-navbar-brand>
     <b-navbar-toggle target="nav-collapse">
       <template #default="{ expanded }">
         <span class="line"></span>
