@@ -1,6 +1,6 @@
 <template>
   <div id="gallery">
-    <stack :monitor-images-loaded="true" :column-min-width="450" :gutter-width="10" :gutter-height="10">
+    <stack :monitor-images-loaded="true" :column-min-width="450" :gutter-width="15" :gutter-height="15">
       <stack-item v-for="image of images" :key="image.slug">
         <nuxt-img v-b-modal="image.slug" preload :src="image.photograph" :alt="`${image.title} by thekevshot`" class="gallery-image" loading="lazy" sizes="sm:450px md:576px lg:768px xl:450px" />
         <b-modal :id="image.slug" size="xl" hide-footer >
@@ -13,7 +13,7 @@
 
 <style>
 #gallery {
-  margin: 5% 0;
+  margin: 2% 0;
   width: 75%;
 }
 
