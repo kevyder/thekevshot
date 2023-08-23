@@ -7,8 +7,19 @@ public_folder: /img
 
 collections:
   - name: 'home'
-    label: 'Home - Street Photography'
+    label: 'Home Gallery'
     folder: 'content/home'
+    format: 'frontmatter'
+    create: true
+    slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
+    editor:
+      preview: false
+    fields:
+      - { label: 'Title', name: 'title', widget: 'string' }
+      - { label: 'Photograph', name: 'photograph', widget: 'image'}
+  - name: 'bw'
+    label: 'B&W Work'
+    folder: 'content/bw'
     format: 'frontmatter'
     create: true
     slug: '{{year}}-{{month}}-{{day}}-{{slug}}'

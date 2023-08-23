@@ -23,7 +23,9 @@ export default {
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: [],
+  css: [
+    '~/assets/css/main.scss',
+  ],
 
   script: [],
 
@@ -89,6 +91,16 @@ export default {
       "/admin",
       "/admin/**"
     ]
+  },
+
+  router: {
+    extendRoutes(routes, resolve) {
+      routes.push({
+        name: 'black-and-white',
+        path: '/black-and-white',
+        component: resolve(__dirname, 'pages/bw.vue')
+      })
+    }
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
