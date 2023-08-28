@@ -4,6 +4,11 @@ export default {
 
   ssr: true,
 
+  env: {
+    hostname: process.env.HOSTNAME || 'http://localhost:3000',
+    debug: process.env.DEBUG || true
+  },
+
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: "Kevin Rodríguez - Street Photographer | thekevshot",
@@ -81,11 +86,11 @@ export default {
 
   'google-gtag': {
     id: "G-9JSDM5R8DD",
-    debug: false
+    debug: process.env.debug
   },
 
   sitemap: {
-    hostname: process.env.HOSTNAME,
+    hostname: process.env.hostname,
     gzip: true,
     exclude: [
       "/admin",
