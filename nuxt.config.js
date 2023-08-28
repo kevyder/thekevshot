@@ -90,11 +90,12 @@ export default {
   },
 
   sitemap: {
-    hostname: process.env.hostname,
+    hostname: 'https://www.thekevshot.com/',
     gzip: true,
     exclude: [
       "/admin",
-      "/admin/**"
+      "/admin/**",
+      "/bw"
     ]
   },
 
