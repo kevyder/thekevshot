@@ -28,3 +28,16 @@ collections:
     fields:
       - { label: 'Title', name: 'title', widget: 'string' }
       - { label: 'Photograph', name: 'photograph', widget: 'image'}
+  - name: 'about'
+    label: 'About'
+      folder: 'content/about'
+      format: 'frontmatter'
+      create: false
+      delete: false
+      slug: '{{slug}}'
+      editor:
+        preview: false
+      fields:
+        - { label: 'Title', name: 'title', widget: 'string' }
+        - { label: 'Photograph', name: 'photograph', widget: 'image'}
+        - { label: 'Description', name: 'description', widget: 'markdown'}
