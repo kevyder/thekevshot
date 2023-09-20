@@ -1,28 +1,26 @@
 <template>
-<header class="header">
-  <h1 class="main-title"><a href="/">Kevin Rodríguez | thekevshot</a></h1>
-  <b-navbar toggleable="lg" type="white" variant="white" class="nav-bar text-center">
-    <b-navbar-brand id="navbar-brand" href="/">Kevin Rodríguez</b-navbar-brand>
-    <b-navbar-toggle target="nav-collapse">
-      <template #default="{ expanded }">
-        <span class="line"></span>
-        <span class="line"></span>
-        <span class="line" style="margin-bottom: 0;"></span>
-      </template>
-    </b-navbar-toggle>
-    <b-collapse id="nav-collapse" is-nav>
-      <b-navbar-nav class="mx-auto">
-        <b-nav-item-dropdown text="Gallery" left>
-          <b-dropdown-item href="/black-and-white">Black & White Work</b-dropdown-item>
-        </b-nav-item-dropdown>
-        <b-nav-item class="nav-item" href="/about">About</b-nav-item>
-        <b-nav-item class="nav-item" href="https://www.instagram.com/thekevshot/" target="_blank">Instagram</b-nav-item>
-        <b-nav-item class="nav-item" href="https://www.flickr.com/photos/thekevshot/" target="_blank">Flickr</b-nav-item>
-        <b-nav-item class="nav-item" href="https://twitter.com/thekevshot/" target="_blank">Twitter</b-nav-item>
-      </b-navbar-nav>
-    </b-collapse>
-  </b-navbar>
-</header>
+  <header class="header">
+    <h1 class="main-title"><a href="/">Kevin Rodríguez | thekevshot</a></h1>
+    <b-navbar toggleable="lg" type="white" variant="white" class="nav-bar text-center">
+      <b-navbar-brand id="navbar-brand" href="/">Kevin Rodríguez</b-navbar-brand>
+      <b-navbar-toggle target="nav-collapse">
+        <template #default="{ expanded }">
+          <span class="line"></span>
+          <span class="line"></span>
+          <span class="line" style="margin-bottom: 0;"></span>
+        </template>
+      </b-navbar-toggle>
+      <b-collapse id="nav-collapse" is-nav>
+        <b-navbar-nav class="mx-auto">
+          <b-nav-item-dropdown text="Gallery/Projects" left>
+            <b-dropdown-item href="/black-and-white">Black & White Work</b-dropdown-item>
+          </b-nav-item-dropdown>
+          <b-nav-item class="nav-item" href="/about">About</b-nav-item>
+          <b-nav-item class="nav-item" href="https://linktr.ee/thekevshot" target="_blank">Social</b-nav-item>
+        </b-navbar-nav>
+      </b-collapse>
+    </b-navbar>
+  </header>
 </template>
 
 <style>
@@ -64,7 +62,6 @@
 
 .header .nav-bar .nav-item a:hover {
   color: #666;
-  text-decoration: underline;
 }
 
 @media (max-width: 992px) {
