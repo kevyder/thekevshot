@@ -51,7 +51,7 @@ export default {
     display: "swap",
     families: {
       "Oswald": [700],
-      "Fira+Sans": [200, 600]
+      "Hind": [300]
     }
   },
 

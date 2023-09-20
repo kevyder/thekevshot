@@ -8,8 +8,8 @@
   margin: 0;
   list-style: none;
   text-decoration: none;
-  font-family: 'Fira Sans', sans-serif;
-  font-weight: 200;
+  font-family: 'Hind', sans-serif;
+  font-weight: 300;
 }
 
 body,
