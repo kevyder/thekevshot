@@ -28,11 +28,22 @@ collections:
     fields:
       - { label: 'Title', name: 'title', widget: 'string' }
       - { label: 'Photograph', name: 'photograph', widget: 'image'}
+  - name: 'new-topographics'
+    label: 'New Topographics'
+    folder: 'content/new_topographics'
+    format: 'frontmatter'
+    create: true
+    slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
+    editor:
+      preview: false
+    fields:
+      - { label: 'Title', name: 'title', widget: 'string' }
+      - { label: 'Photograph', name: 'photograph', widget: 'image'}
   - name: 'about'
     label: 'About'
     folder: 'content/about'
     format: 'frontmatter'
-    create: false
+    create: true
     delete: false
     slug: '{{slug}}'
     editor:
