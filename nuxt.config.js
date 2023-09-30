@@ -95,7 +95,8 @@ export default {
     exclude: [
       "/admin",
       "/admin/**",
-      "/bw"
+      "/bw",
+      "/new-topographics"
     ]
   },
 
@@ -105,6 +106,11 @@ export default {
         name: 'black-and-white',
         path: '/black-and-white',
         component: resolve(__dirname, 'pages/bw.vue')
+      }),
+      routes.push({
+        name: 'new-topographics',
+        path: '/new-topographics',
+        component: resolve(__dirname, 'pages/new-topographics.vue')
       })
     }
   },

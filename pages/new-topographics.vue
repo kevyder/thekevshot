@@ -18,7 +18,7 @@ export default {
     title: 'New Topographics by Kevin Rodríguez - Street Photographer | thekevshot'
   },
   async asyncData({ $content }) {
-    var sortedImages = await $content("new-topographics").fetch();
+    var sortedImages = await $content("new_topographics").fetch();
     var shuffledImages = sortedImages.sort((a, b) => 0.5 - Math.random());
     var images  = shuffledImages;
     return {
