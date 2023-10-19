@@ -15,7 +15,7 @@
 <script>
 export default {
   head: {
-    title: 'New Topographics by Kevin Rodríguez - Street Photographer | thekevshot'
+    title: 'New Topographics by Kevin Rodríguez - Street Photography | thekevshot'
   },
   async asyncData({ $content }) {
     var sortedImages = await $content("new_topographics").fetch();

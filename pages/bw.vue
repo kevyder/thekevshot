@@ -15,7 +15,7 @@
 <script>
 export default {
   head: {
-    title: 'Black and White work by Kevin Rodríguez - Street Photographer | thekevshot'
+    title: 'Black and White work by Kevin Rodríguez - Street Photography | thekevshot'
   },
   async asyncData({ $content }) {
     var sortedImages = await $content("bw").fetch();
