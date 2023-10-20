@@ -16,6 +16,7 @@
           <b-dropdown-item href="/black-and-white">Black & White Work</b-dropdown-item>
           <b-dropdown-item href="/new-topographics">New Topographics</b-dropdown-item>
         </b-nav-item-dropdown>
+        <b-nav-item class="nav-item" href="/about">About Me</b-nav-item>
         <b-nav-item class="nav-item" href="https://www.instagram.com/thekevshot/" target="_blank">Instagram</b-nav-item>
         <b-nav-item class="nav-item" href="https://www.flickr.com/photos/thekevshot/" target="_blank">Flickr</b-nav-item>
         <b-nav-item class="nav-item" href="https://twitter.com/thekevshot/" target="_blank">Twitter</b-nav-item>
