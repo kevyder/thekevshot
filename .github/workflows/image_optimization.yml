@@ -1,4 +1,4 @@
-name: image
+name: Images Optimization
 
 on:
   push:
