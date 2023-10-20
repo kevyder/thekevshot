@@ -16,6 +16,7 @@
           <b-dropdown-item href="/black-and-white">Black & White Work</b-dropdown-item>
           <b-dropdown-item href="/new-topographics">New Topographics</b-dropdown-item>
         </b-nav-item-dropdown>
+        <b-nav-item class="nav-item" href="/about">About Me</b-nav-item>
         <b-nav-item class="nav-item" href="https://www.instagram.com/thekevshot/" target="_blank">Instagram</b-nav-item>
         <b-nav-item class="nav-item" href="https://www.flickr.com/photos/thekevshot/" target="_blank">Flickr</b-nav-item>
         <b-nav-item class="nav-item" href="https://twitter.com/thekevshot/" target="_blank">Twitter</b-nav-item>
@@ -52,19 +53,18 @@
 }
 
 .header .nav-bar .nav-item {
-  font-family: 'Fira Sans', sans-serif;;
-  font-weight: 200;
+  font-family: 'Hind', sans-serif;
+  font-weight: 300;
   font-size: 1.2rem;
   text-transform: uppercase;
 }
 
 .header .nav-bar .nav-item a {
-  color: #000;
+  color: #333;
 }
 
 .header .nav-bar .nav-item a:hover {
   color: #666;
-  text-decoration: underline;
 }
 
 @media (max-width: 992px) {

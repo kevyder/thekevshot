@@ -54,7 +54,7 @@ export default {
     display: "swap",
     families: {
       "Oswald": [700],
-      "Fira+Sans": [200, 600]
+      "Hind": [300]
     }
   },
 
@@ -108,11 +108,6 @@ export default {
         name: 'black-and-white',
         path: '/black-and-white',
         component: resolve(__dirname, 'pages/bw.vue')
-      }),
-      routes.push({
-        name: 'new-topographics',
-        path: '/new-topographics',
-        component: resolve(__dirname, 'pages/new-topographics.vue')
       })
     }
   },
