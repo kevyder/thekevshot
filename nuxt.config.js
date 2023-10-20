@@ -45,7 +45,10 @@ export default {
   components: true,
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
-  buildModules: ["@nuxtjs/google-fonts", "@nuxt/image"],
+  buildModules: [
+    "@nuxtjs/google-fonts",
+    "@nuxt/image"
+  ],
 
   googleFonts: {
     display: "swap",
@@ -95,8 +98,7 @@ export default {
     exclude: [
       "/admin",
       "/admin/**",
-      "/bw",
-      "/new-topographics"
+      "/bw"
     ]
   },
 
