@@ -11,7 +11,7 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: "Kevin Rodríguez - Street Photographer | thekevshot",
+    title: "Kevin Rodríguez - Street Photography | thekevshot",
     htmlAttrs: {
       lang: "en"
     },
@@ -21,7 +21,7 @@ export default {
       {
         hid: "description",
         name: "description",
-        content: "Kevin Rodríguez is a street photographer based in Bogotá D.C - Colombia | thekevshot"
+        content: "Explore the vibrant streets of Colombia through Kevin Rodríguez's lens. Capturing the essence of daily life in Colombia, Kevin's street photography brings the urban landscape to life. Discover the colors, shadows, shapes, and moments that make his photography unique. Browse his gallery and immerse yourself in the heart of this dynamic body of work."
       }
     ],
     link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }]
@@ -45,7 +45,10 @@ export default {
   components: true,
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
-  buildModules: ["@nuxtjs/google-fonts", "@nuxt/image"],
+  buildModules: [
+    "@nuxtjs/google-fonts",
+    "@nuxt/image"
+  ],
 
   googleFonts: {
     display: "swap",
@@ -105,6 +108,11 @@ export default {
         name: 'black-and-white',
         path: '/black-and-white',
         component: resolve(__dirname, 'pages/bw.vue')
+      }),
+      routes.push({
+        name: 'new-topographics',
+        path: '/new-topographics',
+        component: resolve(__dirname, 'pages/new-topographics.vue')
       })
     }
   },

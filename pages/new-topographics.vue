@@ -2,7 +2,7 @@
   <b-container class="main h-100" fluid>
     <navbar />
     <b-row class="justify-content-center align-items-center">
-      <h2 class="page-title">Black & White work</h2>
+      <h2 class="page-title">New Topographics</h2>
     </b-row>
     <b-row class="justify-content-center align-items-center">
       <client-only>
@@ -15,10 +15,10 @@
 <script>
 export default {
   head: {
-    title: 'Black and White work by Kevin Rodríguez - Street Photography | thekevshot'
+    title: 'New Topographics by Kevin Rodríguez - Street Photography | thekevshot'
   },
   async asyncData({ $content }) {
-    var sortedImages = await $content("bw").fetch();
+    var sortedImages = await $content("new_topographics").fetch();
     var shuffledImages = sortedImages.sort((a, b) => 0.5 - Math.random());
     var images  = shuffledImages;
     return {
