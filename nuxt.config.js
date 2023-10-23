@@ -109,7 +109,7 @@ export default {
   },
 
   sitemap: {
-    hostname: 'https://www.thekevshot.com/',
+    hostname: 'https://thekevshot.com/',
     gzip: true,
     exclude: [
       "/admin",
