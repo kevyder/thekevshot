@@ -24,7 +24,23 @@ export default {
         content: "Explore the vibrant streets of Colombia through Kevin Rodríguez's lens. Capturing the essence of daily life in Colombia, Kevin's street photography brings the urban landscape to life. Discover the colors, shadows, shapes, and moments that make his photography unique. Browse his gallery and immerse yourself in the heart of this dynamic body of work."
       }
     ],
-    link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }]
+    link: [
+      {
+        rel: "icon",
+        type: "image/x-icon",
+        href: "/favicon.ico"
+      },
+      {
+        rel: 'preconnect',
+        href: "https://www.googletagmanager.com/",
+        crossorigin: true
+      },
+      {
+        rel: 'preconnect',
+        href: "https://www.google-analytics.com/",
+        crossorigin: true
+      }
+    ]
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -116,6 +132,19 @@ export default {
   build: {
     minimize: true,
     minifyCSS: true,
-    minifyJS: true
+    minifyJS: true,
+    extractCSS: true,
+    splitChunks: {
+      pages: true,
+      vendor: true,
+      commons: true,
+      runtime: true,
+      layouts: true
+    },
+    optimization: {
+      splitChunks: {
+        name: false
+      }
+    }
   }
 };
