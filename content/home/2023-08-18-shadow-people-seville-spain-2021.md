@@ -1,4 +1,4 @@
 ---
-title: Shadow people, Seville - Spain, 2021
-photograph: /img/shadow-people-seville-october-2021.jpg
+title: Smoker - Bogotá, Colombia 2023
+photograph: /img/smoker.webp
 ---
