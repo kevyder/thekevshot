@@ -84,7 +84,7 @@ export default {
     "@nuxt/content",
     "bootstrap-vue/nuxt",
     "@nuxtjs/google-gtag",
-    "@nuxtjs/sitemap"
+    "@nuxtjs/sitemap",
   ],
 
   content: {
@@ -114,19 +114,10 @@ export default {
     exclude: [
       "/admin",
       "/admin/**",
-      "/bw"
     ]
   },
 
-  router: {
-    extendRoutes(routes, resolve) {
-      routes.push({
-        name: 'black-and-white',
-        path: '/black-and-white',
-        component: resolve(__dirname, 'pages/bw.vue')
-      })
-    }
-  },
+  router: {},
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
