@@ -39,16 +39,25 @@ collections:
     fields:
       - { label: 'Title', name: 'title', widget: 'string' }
       - { label: 'Photograph', name: 'photograph', widget: 'image'}
-  - name: 'about'
-    label: 'About'
-    folder: 'content/about'
+  - name: 'gear'
+    label: 'Gear'
+    folder: 'content/gear'
     format: 'frontmatter'
     create: true
-    delete: false
     slug: '{{slug}}'
     editor:
       preview: false
     fields:
       - { label: 'Title', name: 'title', widget: 'string' }
-      - { label: 'Photograph', name: 'photograph', widget: 'image'}
-      - { label: 'Description', name: 'description', widget: 'markdown'}
+      - { label: 'Link', name: 'link', widget: 'string' }
+  - name: 'books'
+    label: 'Books'
+    folder: 'content/books'
+    format: 'frontmatter'
+    create: true
+    slug: '{{slug}}'
+    editor:
+      preview: false
+    fields:
+      - { label: 'Title', name: 'title', widget: 'string' }
+      - { label: 'Link', name: 'link', widget: 'markdown' }
