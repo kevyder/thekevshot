@@ -49,6 +49,7 @@ collections:
       preview: false
     fields:
       - { label: 'Title', name: 'title', widget: 'string' }
+      - { label: 'Image', name: 'image', widget: 'string' }
       - { label: 'Link', name: 'link', widget: 'string' }
   - name: 'books'
     label: 'Books'

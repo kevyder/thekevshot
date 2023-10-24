@@ -6,12 +6,20 @@
     </b-row>
     <b-row class="justify-content-center align-items-center">
       <b-col md="3" sm="12" v-for="item of gear" :key="item.slug">
-        <iframe sandbox="allow-popups allow-scripts allow-modals allow-forms allow-same-origin" style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" :src="item.link"></iframe>
-        <h3>{{ item.title }}</h3>
+        <a :href="item.link" target="_blank">
+          <img width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" :src="item.image" >
+        </a>
+        <h3 class="item-title">{{ item.title }}</h3>
       </b-col>
     </b-row>
   </b-container>
 </template>
+
+<style>
+h3.item-title {
+  font-size: 1.1rem;
+}
+</style>
 
 <script>
 export default {
