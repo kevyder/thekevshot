@@ -19,6 +19,7 @@
         </b-col>
       </b-row>
     </b-container>
+    <site-footer />
   </b-container>
 </template>
 

@@ -18,9 +18,6 @@
         </b-nav-item-dropdown>
         <b-nav-item class="nav-item" href="/gear-and-books">Gear & Books</b-nav-item>
         <b-nav-item class="nav-item" href="/about">About Me</b-nav-item>
-        <b-nav-item class="nav-item" href="https://www.instagram.com/thekevshot/" target="_blank">Instagram</b-nav-item>
-        <b-nav-item class="nav-item" href="https://www.flickr.com/photos/thekevshot/" target="_blank">Flickr</b-nav-item>
-        <b-nav-item class="nav-item" href="https://twitter.com/thekevshot/" target="_blank">Twitter</b-nav-item>
       </b-navbar-nav>
     </b-collapse>
   </b-navbar>

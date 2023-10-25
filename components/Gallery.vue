@@ -15,7 +15,7 @@
 
 <style>
 #gallery {
-  margin: 2.5% 0;
+  margin-top: 2.5%;
   width: 75%;
 }
 
