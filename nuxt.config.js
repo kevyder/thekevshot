@@ -95,7 +95,7 @@ export default {
 
   bootstrapVue: {
     // Install the `IconsPlugin` plugin (in addition to `BootstrapVue` plugin)
-    icons: false,
+    icons: true,
     componentPlugins: [
       'LayoutPlugin',
       'ModalPlugin',

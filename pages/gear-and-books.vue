@@ -16,7 +16,7 @@
     </b-row>
 
     <b-row class="justify-content-center align-items-center">
-      <h2 class="page-title">Books</h2>
+      <h2 class="page-title">My book collection</h2>
     </b-row>
     <b-row class="justify-content-center align-items-center">
       <b-col md="3" sm="12" v-for="book of books" :key="book.slug">
@@ -28,6 +28,7 @@
         </h3>
       </b-col>
     </b-row>
+    <site-footer />
   </b-container>
 </template>
 
@@ -59,6 +60,9 @@
 
 <script>
 export default {
+  head: {
+    title: 'Gear and books by Kevin Rodríguez - Street Photography | thekevshot'
+  },
   async asyncData({ $content }) {
     var gear_data = await $content("gear").fetch();
     var books_data = await $content("books").fetch();

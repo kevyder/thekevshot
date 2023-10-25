@@ -9,6 +9,7 @@
         <gallery :images="images" />
       </client-only>
     </b-row>
+    <site-footer />
   </b-container>
 </template>
 
