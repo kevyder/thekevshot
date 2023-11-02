@@ -1,4 +1,4 @@
 ---
-title: Avocados
-photograph: /img/avocados.webp
+title: Parking
+photograph: /img/parking.webp
 ---

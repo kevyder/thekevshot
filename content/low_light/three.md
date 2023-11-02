@@ -1,4 +1,4 @@
 ---
-title: Xativa
-photograph: /img/xativa.webp
+title: Three
+photograph: /img/three.webp
 ---
