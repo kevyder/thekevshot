@@ -119,6 +119,11 @@ export default {
 
   router: {},
 
+  render: {
+    compressor: true,
+    ssr: true
+  },
+
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
     minimize: true,
