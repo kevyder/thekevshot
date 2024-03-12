@@ -13,9 +13,7 @@
     <b-collapse id="nav-collapse" is-nav>
       <b-navbar-nav class="mx-auto">
         <b-nav-item-dropdown text="Gallery" left>
-          <b-dropdown-item href="/black-and-white">Black & White Work</b-dropdown-item>
-          <b-dropdown-item href="/new-topographics">New Topographics</b-dropdown-item>
-          <b-dropdown-item href="/low-light">Low Light / Night Photos</b-dropdown-item>
+          <b-dropdown-item href="/black-and-white">Black & White</b-dropdown-item>
         </b-nav-item-dropdown>
         <b-nav-item class="nav-item" href="/gear-and-books">Gear & Books</b-nav-item>
         <b-nav-item class="nav-item" href="/about">About Me</b-nav-item>
