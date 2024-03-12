@@ -28,6 +28,17 @@ collections:
     fields:
       - { label: 'Title', name: 'title', widget: 'string' }
       - { label: 'Photograph', name: 'photograph', widget: 'image'}
+  - name: 'silhouettes'
+    label: 'Silhouettes'
+    folder: 'content/silhouettes'
+    format: 'frontmatter'
+    create: true
+    slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
+    editor:
+      preview: false
+    fields:
+      - { label: 'Title', name: 'title', widget: 'string' }
+      - { label: 'Photograph', name: 'photograph', widget: 'image'}
   - name: 'gear'
     label: 'Gear'
     folder: 'content/gear'

@@ -15,10 +15,8 @@
 
 <style>
 #gallery {
-  display: block;
   margin-top: 2.5%;
   width: 75%;
-  min-height: 720px;
 }
 
 #gallery .gallery-image,
