@@ -76,7 +76,6 @@ export default {
 
   image: {
     provider: 'netlify',
-
   },
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -94,8 +93,6 @@ export default {
   },
 
   bootstrapVue: {
-    // Install the `IconsPlugin` plugin (in addition to `BootstrapVue` plugin)
-    icons: true,
     componentPlugins: [
       'LayoutPlugin',
       'ModalPlugin',
@@ -121,7 +118,11 @@ export default {
 
   render: {
     compressor: true,
-    ssr: true
+    ssr: true,
+    asyncScripts: true,
+    http2: {
+      push: true
+    }
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
@@ -130,6 +131,10 @@ export default {
     minifyCSS: true,
     minifyJS: true,
     extractCSS: true,
+    html: {
+      minifyCSS: false,
+      minifyJS: false
+    },
     splitChunks: {
       pages: true,
       vendor: true,
