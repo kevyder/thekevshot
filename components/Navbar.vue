@@ -18,6 +18,7 @@
         </b-nav-item-dropdown>
         <b-nav-item class="nav-item" href="/gear-and-books">Gear & Books</b-nav-item>
         <b-nav-item class="nav-item" href="/about">About Me</b-nav-item>
+        <b-nav-item class="nav-item" href="https://www.instagram.com/thekevshot/">Instagram</b-nav-item>
       </b-navbar-nav>
     </b-collapse>
   </b-navbar>
