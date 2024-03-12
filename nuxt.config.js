@@ -119,7 +119,7 @@ export default {
   render: {
     compressor: true,
     ssr: true,
-    asyncScripts: true,
+    asyncScripts: false,
     http2: {
       push: true
     }
