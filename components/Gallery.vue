@@ -20,6 +20,11 @@
   width: 75%;
 }
 
+#gallery .gallery-image{
+  max-width: 100%;
+  height: auto;
+}
+
 #gallery .gallery-image,
 .modal-image {
   width: 100%;
