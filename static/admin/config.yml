@@ -39,6 +39,17 @@ collections:
     fields:
       - { label: 'Title', name: 'title', widget: 'string' }
       - { label: 'Photograph', name: 'photograph', widget: 'image'}
+  - name: 'bolivar-square'
+    label: 'Bolívar Square'
+    folder: 'content/bolivar-square'
+    format: 'frontmatter'
+    create: true
+    slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
+    editor:
+      preview: false
+    fields:
+      - { label: 'Title', name: 'title', widget: 'string' }
+      - { label: 'Photograph', name: 'photograph', widget: 'image'}
   - name: 'gear'
     label: 'Gear'
     folder: 'content/gear'
