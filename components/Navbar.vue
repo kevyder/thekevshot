@@ -15,6 +15,7 @@
         <b-nav-item-dropdown text="Gallery" left>
           <b-dropdown-item href="/black-and-white">Black & White</b-dropdown-item>
           <b-dropdown-item href="/silhouettes">Silhouettes</b-dropdown-item>
+          <b-dropdown-item href="/bolivar-square">Bolivar Square</b-dropdown-item>
         </b-nav-item-dropdown>
         <b-nav-item class="nav-item" href="/gear-and-books">Gear & Books</b-nav-item>
         <b-nav-item class="nav-item" href="/about">About Me</b-nav-item>
