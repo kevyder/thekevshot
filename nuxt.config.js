@@ -82,7 +82,6 @@ export default {
   modules: [
     "@nuxt/content",
     "bootstrap-vue/nuxt",
-    "@nuxtjs/google-gtag",
     "@nuxtjs/sitemap",
   ],
 
@@ -98,11 +97,6 @@ export default {
       'ModalPlugin',
       'NavbarPlugin'
     ],
-  },
-
-  'google-gtag': {
-    id: "G-9JSDM5R8DD",
-    debug: process.env.debug
   },
 
   sitemap: {
