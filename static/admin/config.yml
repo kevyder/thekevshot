@@ -50,9 +50,9 @@ collections:
     fields:
       - { label: 'Title', name: 'title', widget: 'string' }
       - { label: 'Photograph', name: 'photograph', widget: 'image'}
-  - name: 'gear'
-    label: 'Gear'
-    folder: 'content/gear'
+  - name: 'links'
+    label: 'Links'
+    folder: 'content/links'
     format: 'frontmatter'
     create: true
     slug: '{{slug}}'
@@ -60,17 +60,5 @@ collections:
       preview: false
     fields:
       - { label: 'Title', name: 'title', widget: 'string' }
-      - { label: 'Image', name: 'image', widget: 'string' }
       - { label: 'Link', name: 'link', widget: 'string' }
-  - name: 'books'
-    label: 'Books'
-    folder: 'content/books'
-    format: 'frontmatter'
-    create: true
-    slug: '{{slug}}'
-    editor:
-      preview: false
-    fields:
-      - { label: 'Title', name: 'title', widget: 'string' }
-      - { label: 'Image', name: 'image', widget: 'string' }
-      - { label: 'Link', name: 'link', widget: 'string' }
+      - { label: 'Order', name: 'order', widget: 'string' }
