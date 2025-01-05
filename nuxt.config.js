@@ -95,7 +95,9 @@ export default {
     componentPlugins: [
       'LayoutPlugin',
       'ModalPlugin',
-      'NavbarPlugin'
+      'NavbarPlugin',
+      'ButtonPlugin',
+      'LinkPlugin',
     ],
   },
 
