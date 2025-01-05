@@ -40,12 +40,14 @@
   font-weight: 700;
   text-transform: uppercase;
   margin: 1.5rem;
+  text-align: center;
 }
 
 .links-page-description {
   text-transform: uppercase;
   font-size: 1rem;
   margin: 0.7rem;
+  text-align: center;
 }
 
 .link-href {
