@@ -6,7 +6,8 @@ export default {
 
   env: {
     hostname: process.env.HOSTNAME || 'http://localhost:3000',
-    debug: process.env.DEBUG || true
+    debug: process.env.DEBUG || true,
+    gtmId: process.env.GTM_ID
   },
 
   // Global page headers: https://go.nuxtjs.dev/config-head
@@ -54,7 +55,8 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    { src: '~/plugins/vue-stack-grid.client.js'}
+    { src: '~/plugins/vue-stack-grid.client.js' },
+    { src: '~/plugins/gtm.js' },
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -73,7 +75,7 @@ export default {
       "Hind": [300]
     }
   },
-
+  
   image: {
     provider: 'netlify',
   },
@@ -83,6 +85,7 @@ export default {
     "@nuxt/content",
     "bootstrap-vue/nuxt",
     "@nuxtjs/sitemap",
+    "@nuxtjs/gtm",
   ],
 
   content: {
