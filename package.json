@@ -15,13 +15,13 @@
     "@nuxtjs/gtm": "^2.4.0",
     "@nuxtjs/sitemap": "^2.4.0",
     "bootstrap-vue": "^2.21.2",
-    "nuxt": "^2.17.1",
+    "nuxt": "^4.0.3",
     "vue-stack-grid": "^1.2.2"
   },
   "devDependencies": {
     "@nuxt/image": "^0.7.1",
     "node-sass": "^8.0.0",
     "sass-loader": "^10.2.0",
-    "webpack": "^4.46.0"
+    "webpack": "^5.101.3"
   }
 }
