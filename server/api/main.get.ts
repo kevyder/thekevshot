@@ -34,7 +34,6 @@ export default defineEventHandler(async (event): Promise<Photo[]> => {
     }
 
     return response.data
-      .filter((item) => item.data.status === 'published')
       .map((item) => ({
         src: `${mediaBaseUrl}${item.data.photo}`,
         alt: item.data.altText || item.data.title,

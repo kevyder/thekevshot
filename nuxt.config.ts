@@ -2,14 +2,24 @@
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
-  ssr: false,
+  ssr: true,
+
+  modules: [
+    '@nuxt/image'
+  ],
+  image: {
+    provider: 'cloudflare',
+    cloudflare: {
+      baseURL: process.env.NUXT_MEDIA_BASE_URL || 'http://localhost:8787',
+    }
+  },
 
   css: ['~/assets/css/main.css'],
 
   runtimeConfig: {
     // Server-only config - override with NUXT_CMS_BASE_URL env var
     cmsBaseUrl: process.env.NUXT_CMS_BASE_URL || 'http://localhost:8787',
-    mediaBaseUrl: process.env.NUXT_MEDIA_BASE_URL || 'http://localhost:8787',
+    mediaBaseUrl: process.env.NUXT_MEDIA_BASE_URL || 'http://localhost:8787'
   },
 
   app: {
@@ -36,5 +46,5 @@ export default defineNuxtConfig({
         }
       ]
     }
-  }
+  },
 })

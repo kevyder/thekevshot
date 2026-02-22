@@ -71,7 +71,8 @@ onUnmounted(() => {
             class="carousel-item"
             :class="{ 'is-active': index === currentIndex }"
           >
-            <img
+            <NuxtImg
+              provider="cloudflare"
               :src="photo.src"
               :alt="photo.alt"
               class="carousel-image"
