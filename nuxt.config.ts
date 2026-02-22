@@ -3,18 +3,24 @@ export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
   ssr: true,
+  css: ['~/assets/css/main.css'],
 
-  modules: [
-    '@nuxt/image'
-  ],
+  // Modules
+  modules: ['@nuxt/image', 'nuxt-gtag'],
+
+  // Modules configuration
   image: {
     provider: 'cloudflare',
+    format: ['webp'],
     cloudflare: {
       baseURL: process.env.NUXT_MEDIA_BASE_URL || 'http://localhost:8787',
     }
   },
 
-  css: ['~/assets/css/main.css'],
+  gtag: {
+    enabled: process.env.NODE_ENV === 'production',
+    id: process.env.NUXT_GTAG_ID,
+  },
 
   runtimeConfig: {
     // Server-only config - override with NUXT_CMS_BASE_URL env var
@@ -24,7 +30,10 @@ export default defineNuxtConfig({
 
   app: {
     head: {
-      title: 'thekevshot | Street Photography by Kevin Rodriguez',
+      title: 'Kevin Rodríguez - Street Photography | thekevshot',
+      htmlAttrs: {
+        lang: "en"
+      },
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
