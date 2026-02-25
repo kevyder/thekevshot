@@ -75,6 +75,7 @@ onUnmounted(() => {
               provider="cloudflare"
               :src="photo.src"
               :alt="photo.alt"
+              height="1080"
               class="carousel-image"
               draggable="false"
             />
