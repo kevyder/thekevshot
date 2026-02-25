@@ -4,14 +4,13 @@ const instagramUrl = 'https://instagram.com/thekevshot'
 
 <template>
   <nav class="navbar">
-    <NuxtLink to="/" class="navbar-brand">
-      THEKEVSHOT
-    </NuxtLink>
+    <NuxtLink to="/" class="navbar-brand">THEKEVSHOT</NuxtLink>
 
     <div class="navbar-links">
-      <NuxtLink to="/" class="nav-link">
-        HOME
-      </NuxtLink>
+      <NuxtLink to="/" class="nav-link">HOME</NuxtLink>
+
+      <NuxtLink to="/contact" class="nav-link">CONTACT</NuxtLink>
+
       <a
         :href="instagramUrl"
         target="_blank"

@@ -56,14 +56,24 @@ bun run test tests/components/Gallery.spec.ts
 ```
 thekevshot/
 ├── app/                    # Application source code
-│   ├── app.vue             # Root component
+│   ├── app.vue             # Root component (includes SiteNavbar + NuxtPage)
 │   ├── components/         # Vue components
+│   │   ├── ContactForm.vue     # Contact form with client validation, thank-you state
+│   │   ├── PhotoCarousel.vue   # Single-photo carousel with fade transitions
+│   │   └── SiteNavbar.vue      # Minimalist uppercase navbar (Home, Contact, Instagram)
 │   ├── pages/              # File-based routing
+│   │   ├── contact.vue         # Contact page with SEO meta + ContactForm
+│   │   └── index.vue           # Homepage with photo carousel
 │   ├── layouts/            # Page layouts
 │   ├── composables/        # Vue composables (auto-imported)
-│   └── assets/             # Processed assets (CSS, fonts)
+│   └── assets/
+│       └── css/
+│           └── main.css        # Global styles (Hind font, reset, focus styles)
 ├── public/                 # Static assets (served at root)
 ├── server/                 # Server routes and middleware (Nitro)
+│   └── api/
+│       ├── contact.post.ts      # Contact form endpoint (Zod, rate limit, Resend)
+│       └── main.get.ts          # Proxies CMS requests, filters published items
 ├── shared/                 # Code shared between app and server
 ├── nuxt.config.ts          # Nuxt configuration
 └── tsconfig.json           # TypeScript configuration
@@ -267,3 +277,127 @@ useSeoMeta({
 - **Commit messages:** Use conventional commits (`feat:`, `fix:`, `docs:`, etc.)
 - **Images:** Tracked with Git LFS (configured in `.gitattributes`)
 - **Deploy:** Netlify (automatic deploys from main branch)
+
+---
+
+## Environment Variables
+
+| Variable | Description | Default |
+|----------|-------------|---------|
+| `NUXT_CMS_BASE_URL` | Base URL for the headless CMS | `http://localhost:8787` |
+| `NUXT_MEDIA_BASE_URL` | Base URL for Cloudflare image provider | `http://localhost:8787` |
+| `NUXT_RESEND_API_KEY` | Resend API key for sending contact form emails | *(required)* |
+| `NUXT_CONTACT_TO_ADDRESS` | Recipient email for contact form submissions | *(required)* |
+| `NUXT_CONTACT_FROM_ADDRESS` | Sender "From" address for contact emails | `noreply@thekevshot.com` |
+| `NUXT_PUBLIC_TURNSTILE_SITE_KEY` | Cloudflare Turnstile site key (client-side widget) | *(required)* |
+| `NUXT_TURNSTILE_SECRET_KEY` | Cloudflare Turnstile secret key (server-side verification) | *(required)* |
+| `NUXT_GTAG_ID` | Google Analytics measurement ID | *(disabled if unset)* |
+
+---
+
+## CMS Integration
+
+The site pulls photos from a headless CMS via server-side API routes to keep credentials hidden.
+
+### CMS Endpoint
+
+```
+GET /api/collections/main-page/content?limit=50
+```
+
+### CMS Response Schema
+
+```typescript
+interface CmsMainPageItem {
+  id: string
+  status: string
+  data: {
+    title: string
+    photo: string           // Image path (e.g., "/uploads/photo.jpg")
+    altText?: string
+    status: 'draft' | 'published' | 'archived'
+  }
+}
+```
+
+### Internal API
+
+The `/api/main` endpoint proxies CMS requests and filters for published items only:
+
+```typescript
+// Returns Photo[] - only items with data.status === 'published'
+interface Photo {
+  src: string      // Full URL: cmsBaseUrl + data.photo
+  alt: string      // data.altText || data.title
+  caption: string  // data.title
+}
+```
+
+---
+
+## Contact Page & API
+
+The `/contact` page allows visitors to send a message to Kevin Rodriguez via an accessible form with server-side email delivery.
+
+### Form Fields
+
+| Field | Type | Max Length | Autocomplete |
+|-------|------|-----------|--------------|
+| First Name | text | 50 | `given-name` |
+| Last Name | text | 50 | `family-name` |
+| Email | email | 254 | `email` |
+| Subject | text | 150 | -- |
+| Message | textarea | 5000 | -- |
+
+All fields are required. First Name and Last Name appear side-by-side on desktop and stack on mobile (`max-width: 480px`).
+
+### Client-Side Validation (`ContactForm.vue`)
+
+- Mirrors server-side Zod rules: required (after trim), max length, email format.
+- **Bot protection:** Embeds a `<NuxtTurnstile>` widget; the token is captured via `v-model` and sent with the form. Submission is blocked if the challenge is not completed. The widget is reset after each submission attempt.
+- Per-field error messages displayed below each input with `role="alert"`.
+- On success, the entire form is replaced by a centered "Thank You" message.
+- Handles server errors: maps 422 field errors to fields, shows rate limit message for 429, generic message otherwise.
+- Submit button shows "Sending..." with disabled state during submission.
+
+### Server-Side API (`/api/contact` POST)
+
+- **Validation:** Zod schema with `.trim()`, `.min(1)`, `.max()`, `.email()` and custom error messages. Returns `422` with `{ error, details: [{ field, message }] }` format.
+- **Bot protection:** Verifies the Turnstile token via `verifyTurnstileToken()` (auto-imported by `@nuxtjs/turnstile`). Returns `422` if verification fails.
+- **Rate Limiting:** In-memory, 5 requests per IP per hour. Returns `429` when exceeded.
+- **Sanitization:** All fields are HTML-escaped before inclusion in the email body.
+- **Email Delivery:** Uses the official Resend SDK (`resend.emails.send()`). The `replyTo` field is set to the submitter's email address.
+- **Error codes:** `422` validation, `429` rate limit, `500` missing config, `502` send failure.
+
+### Dependencies
+
+| Package | Version | Purpose |
+|---------|---------|---------|
+| `zod` | 4.x | Schema validation (server + mirrors on client) |
+| `resend` | 6.x | Email delivery via Resend API |
+
+### Future Enhancements
+
+- **Reply-To / From address:** Configurable separately if needed.
+
+---
+
+## Design Specifications
+
+### Typography
+
+- **Logo/Brand:** Oswald, weight 800, uppercase
+- **Body text:** Hind, weight 400
+
+### Colors
+
+- **Background:** White (`#ffffff`)
+- **Text:** Dark gray/black
+- **Navigation controls:** Gray (`#666`) with black hover
+
+### Layout
+
+- **Navbar:** Minimalist, brand on left, links on right, uppercase text
+- **Homepage:** Full-viewport photo carousel, no scrolling
+- **Carousel:** Single photo with fade transitions, centered caption, arrow controls on sides
+- **Contact page:** Centered form (600px max-width), scrollable, labels above inputs, name fields side-by-side on desktop

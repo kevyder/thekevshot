@@ -16,7 +16,6 @@ body,
 }
 
 body {
-  overflow: hidden; /* Disable scrolling */
   background: #fff;
   color: #111;
   font-family: 'Hind', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',

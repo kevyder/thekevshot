@@ -158,7 +158,7 @@ onUnmounted(() => {
 }
 
 .carousel-image {
-  max-width: 100%;
+  width: 100%;
   max-height: 100%;
   object-fit: contain;
   user-select: none;

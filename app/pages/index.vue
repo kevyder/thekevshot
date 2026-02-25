@@ -38,6 +38,7 @@ const { data: photos, status, error } = await useFetch<Photo[]>('/api/main')
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 }
 
 .loading,

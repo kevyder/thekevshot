@@ -6,7 +6,7 @@ export default defineNuxtConfig({
   css: ['~/assets/css/main.css'],
 
   // Modules
-  modules: ['@nuxt/image', 'nuxt-gtag'],
+  modules: ['@nuxt/image', 'nuxt-gtag', '@nuxtjs/turnstile'],
 
   // Modules configuration
   image: {
@@ -21,11 +21,25 @@ export default defineNuxtConfig({
     enabled: process.env.NODE_ENV === 'production',
     id: process.env.NUXT_GTAG_ID,
   },
+   turnstile: {
+    siteKey: process.env.NUXT_PUBLIC_TURNSTILE_SITE_KEY,
+  },
 
   runtimeConfig: {
     // Server-only config - override with NUXT_CMS_BASE_URL env var
     cmsBaseUrl: process.env.NUXT_CMS_BASE_URL || 'http://localhost:8787',
-    mediaBaseUrl: process.env.NUXT_MEDIA_BASE_URL || 'http://localhost:8787'
+    mediaBaseUrl: process.env.NUXT_MEDIA_BASE_URL || 'http://localhost:8787',
+
+    // Contact form / Resend - server-only
+    resendApiKey: process.env.NUXT_PUBLIC_RESEND_API_KEY,
+    contactToAddress: process.env.NUXT_CONTACT_TO_ADDRESS,
+    contactFromAddress: process.env.NUXT_CONTACT_FROM_ADDRESS,
+
+    turnstile: {
+      // This can be overridden at runtime via the NUXT_TURNSTILE_SECRET_KEY
+      // environment variable.
+      secretKey: process.env.NUXT_TURNSTILE_SECRET_KEY,
+    },
   },
 
   app: {
