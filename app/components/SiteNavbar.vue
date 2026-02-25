@@ -31,7 +31,7 @@ const instagramUrl = 'https://instagram.com/thekevshot'
   height: 64px;
   padding: 0 2rem;
   background: #fff;
-  margin: 1% 15%;
+  margin: 1% 15% 0 15%;
 }
 
 .navbar-brand {

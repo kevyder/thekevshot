@@ -2,11 +2,23 @@
 import type { Photo } from '~/components/PhotoCarousel.vue'
 
 useSeoMeta({
-  title: 'thekevshot | Street Photography by Kevin Rodriguez',
-  description: 'Street photography portfolio by Kevin Rodriguez',
-  ogTitle: 'thekevshot | Street Photography',
-  ogDescription: 'Street photography portfolio by Kevin Rodriguez',
-  ogType: 'website'
+  title: 'thekevshot | Photography by Kevin Rodríguez',
+  description: 'Kevin Rodríguez (thekevshot) is a photographer based in Bogotá, Colombia focusing on street photography, new topographics, and more.',
+
+  // Open Graph meta tags
+  ogType: 'website',
+  ogUrl: 'https://thekevshot.com',
+  ogTitle: 'thekevshot | Photography by Kevin Rodríguez',
+  ogDescription: 'Kevin Rodríguez (thekevshot) is a photographer based in Bogotá, Colombia focusing on street photography, new topographics, and more.',
+  ogImage: '/og-image.jpg',
+
+  // Twitter Card meta tags
+  twitterCard: 'summary_large_image',
+  twitterTitle: 'thekevshot | Photography by Kevin Rodríguez',
+  twitterDescription: 'Kevin Rodríguez (thekevshot) is a photographer based in Bogotá, Colombia focusing on street photography, new topographics, and more.',
+  twitterImage: '/og-image.jpg',
+  twitterSite: '@thekevshot',
+  twitterCreator: '@thekevshot',
 })
 
 const { data: photos, status, error } = await useFetch<Photo[]>('/api/main')
