@@ -1,4 +1,4 @@
-[observability]
+name = "thekevshot"[observability]
 enabled = true
 
 [vars]
