@@ -286,11 +286,10 @@ The source of truth for environment variables is `.env.template`. Copy it to `.e
 
 | Variable | Description | Default |
 |----------|-------------|---------|
-| `NUXT_ENV` | Environment mode | `development` |
 | `NUXT_CMS_BASE_URL` | Base URL for the headless CMS | `http://localhost:8787` |
 | `NUXT_MEDIA_BASE_URL` | Base URL for Cloudflare image provider | `http://localhost:8787` |
 | `NUXT_IMAGE_DOMAINS` | Allowed domains for `@nuxt/image` | `localhost:8787` |
-| `NUXT_GTAG_ID` | Google Analytics measurement ID | *(disabled if unset)* |
+| `NUXT_PUBLIC_GTAG_ID` | Google Analytics measurement ID | *(disabled if unset)* |
 | `NUXT_PUBLIC_RESEND_API_KEY` | Resend API key for sending contact form emails | *(required)* |
 | `NUXT_CONTACT_TO_ADDRESS` | Recipient email for contact form submissions | *(required)* |
 | `NUXT_CONTACT_FROM_ADDRESS` | Sender "From" address for contact emails | *(required)* |

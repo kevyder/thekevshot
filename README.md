@@ -53,11 +53,10 @@ tsconfig.json
 Copy `.env.template` to `.env` and fill in values.
 
 ```
-NUXT_ENV                       # development | production
 NUXT_CMS_BASE_URL              # CMS base URL
 NUXT_MEDIA_BASE_URL            # Cloudflare image provider URL
 NUXT_IMAGE_DOMAINS             # Allowed image domains
-NUXT_GTAG_ID                   # Google Analytics ID (optional)
+NUXT_PUBLIC_GTAG_ID            # Google Analytics ID (optional)
 NUXT_PUBLIC_RESEND_API_KEY     # Resend API key
 NUXT_CONTACT_TO_ADDRESS        # Contact form recipient email
 NUXT_CONTACT_FROM_ADDRESS      # Contact form sender email
