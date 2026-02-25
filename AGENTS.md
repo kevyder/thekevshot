@@ -9,7 +9,7 @@ Guidelines for AI coding agents working in this repository.
 - **Framework:** Nuxt 4 (Vue 3)
 - **Language:** TypeScript (ES Modules)
 - **Package Manager:** Bun
-- **Deployment:** Netlify
+- **Deployment:** Cloudflare Workers
 - **Git LFS:** Enabled for images (`.jpg`, `.png`)
 
 ---
@@ -276,7 +276,40 @@ useSeoMeta({
 
 - **Commit messages:** Use conventional commits (`feat:`, `fix:`, `docs:`, etc.)
 - **Images:** Tracked with Git LFS (configured in `.gitattributes`)
-- **Deploy:** Netlify (automatic deploys from main branch)
+- **Deploy:** Cloudflare Workers (automatic deploys from main branch)
+
+---
+
+## Deployment (Cloudflare Workers)
+
+Non-secret environment variables are defined in `wrangler.toml` under `[vars]`.
+
+Server-only secrets must be set via the Cloudflare dashboard or CLI — **never commit them to the repository**:
+
+```bash
+npx wrangler secret put NUXT_RESEND_API_KEY
+npx wrangler secret put NUXT_TURNSTILE_SECRET_KEY
+```
+
+Deploy after building:
+
+```bash
+bun run build
+npx wrangler --cwd .output deploy
+```
+
+### Nuxt runtimeConfig Auto-Mapping
+
+Nuxt automatically maps environment variables to `runtimeConfig` keys using the `NUXT_` prefix:
+
+| runtimeConfig key | Environment variable |
+|---|---|
+| `resendApiKey` | `NUXT_RESEND_API_KEY` |
+| `contactToAddress` | `NUXT_CONTACT_TO_ADDRESS` |
+| `contactFromAddress` | `NUXT_CONTACT_FROM_ADDRESS` |
+| `turnstile.secretKey` | `NUXT_TURNSTILE_SECRET_KEY` |
+
+**Important:** Server-only secrets must use the `NUXT_` prefix (not `NUXT_PUBLIC_`). The `NUXT_PUBLIC_` prefix is reserved for client-exposed values. Exposing API keys with `NUXT_PUBLIC_` is a security risk.
 
 ---
 
@@ -290,7 +323,7 @@ The source of truth for environment variables is `.env.template`. Copy it to `.e
 | `NUXT_MEDIA_BASE_URL` | Base URL for Cloudflare image provider | `http://localhost:8787` |
 | `NUXT_IMAGE_DOMAINS` | Allowed domains for `@nuxt/image` | `localhost:8787` |
 | `NUXT_PUBLIC_GTAG_ID` | Google Analytics measurement ID | *(disabled if unset)* |
-| `NUXT_PUBLIC_RESEND_API_KEY` | Resend API key for sending contact form emails | *(required)* |
+| `NUXT_RESEND_API_KEY` | Resend API key for sending contact form emails (server-only secret) | *(required)* |
 | `NUXT_CONTACT_TO_ADDRESS` | Recipient email for contact form submissions | *(required)* |
 | `NUXT_CONTACT_FROM_ADDRESS` | Sender "From" address for contact emails | *(required)* |
 | `NUXT_PUBLIC_TURNSTILE_SITE_KEY` | Cloudflare Turnstile site key (client-side widget) | *(required)* |

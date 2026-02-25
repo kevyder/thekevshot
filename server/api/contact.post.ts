@@ -112,7 +112,7 @@ export default defineEventHandler(async (event) => {
 
   // Check that Resend is configured
   if (!config.resendApiKey) {
-    console.error('[contact] RESEND_API_KEY is not configured')
+    console.error('[contact] NUXT_RESEND_API_KEY is not configured')
     throw createError({
       statusCode: 500,
       statusMessage: 'Email service is not configured',

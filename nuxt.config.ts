@@ -27,34 +27,37 @@ export default defineNuxtConfig({
 
   // Nitro server engine configuration
   nitro: {
+    // Use Cloudflare Workers preset for deployment
+    preset: 'cloudflare_module',
     // @react-email/render is an optional dynamic import in the Resend SDK.
     // We never use React email templates (we pass raw HTML), so it must be
-    // externalised to prevent Rollup from failing on the Cloudflare Pages
+    // externalised to prevent Rollup from failing on the Cloudflare Workers
     // preset where unresolved externals are not allowed.
     rollupConfig: {
       external: ['@react-email/render'],
     },
-    // Enable Node.js API compatibility for Cloudflare Workers/Pages.
+    // Enable Node.js API compatibility for Cloudflare Workers.
     // Required by dependencies like the Resend SDK that use Node built-ins.
     cloudflare: {
+      deployConfig: true,
       nodeCompat: true,
     },
   },
 
   runtimeConfig: {
-    // Server-only config - override with NUXT_CMS_BASE_URL env var
-    cmsBaseUrl: process.env.NUXT_CMS_BASE_URL || 'http://localhost:8787',
-    mediaBaseUrl: process.env.NUXT_MEDIA_BASE_URL || 'http://localhost:8787',
+    // Server-only config — auto-mapped from NUXT_CMS_BASE_URL, NUXT_MEDIA_BASE_URL
+    cmsBaseUrl: 'http://localhost:8787',
+    mediaBaseUrl: 'http://localhost:8787',
 
     // Contact form / Resend - server-only
-    resendApiKey: process.env.RESEND_API_KEY,
-    contactToAddress: process.env.NUXT_CONTACT_TO_ADDRESS,
-    contactFromAddress: process.env.NUXT_CONTACT_FROM_ADDRESS,
+    // Auto-mapped from NUXT_RESEND_API_KEY, NUXT_CONTACT_TO_ADDRESS, NUXT_CONTACT_FROM_ADDRESS
+    resendApiKey: '',
+    contactToAddress: '',
+    contactFromAddress: '',
 
     turnstile: {
-      // This can be overridden at runtime via the NUXT_TURNSTILE_SECRET_KEY
-      // environment variable.
-      secretKey: process.env.NUXT_TURNSTILE_SECRET_KEY,
+      // Auto-mapped from NUXT_TURNSTILE_SECRET_KEY
+      secretKey: '',
     },
   },
 

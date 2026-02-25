@@ -1,4 +1,6 @@
 name = "thekevshot"
+compatibility_date = "2024-09-19"
+
 [observability]
 [observability.logs]
 enabled = true
@@ -13,5 +15,9 @@ NUXT_PUBLIC_GTAG_ID="G-9JSDM5R8DD"
 # resend setup
 NUXT_CONTACT_TO_ADDRESS="kyrodriguez97@gmail.com"
 NUXT_CONTACT_FROM_ADDRESS="noreply@thekevshot.com"
+# NUXT_RESEND_API_KEY — set as a secret via CLI, NOT here
+# To set: npx wrangler secret put NUXT_RESEND_API_KEY
 
 NUXT_PUBLIC_TURNSTILE_SITE_KEY="0x4AAAAAAChpBMoMlQBHzL3-"
+# NUXT_TURNSTILE_SECRET_KEY — set as a secret via CLI, NOT here
+# To set: npx wrangler secret put NUXT_TURNSTILE_SECRET_KEY

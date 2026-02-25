@@ -1,6 +1,6 @@
 # THEKEVSHOT
 
-Kevin Rodriguez photography portfolio. Nuxt 4, TypeScript, Bun. Contact form with Resend + Turnstile. Deployed to Cloudflare.
+Kevin Rodriguez photography portfolio. Nuxt 4, TypeScript, Bun. Contact form with Resend + Turnstile. Deployed to Cloudflare Workers.
 
 ## Commands
 
@@ -57,9 +57,27 @@ NUXT_CMS_BASE_URL              # CMS base URL
 NUXT_MEDIA_BASE_URL            # Cloudflare image provider URL
 NUXT_IMAGE_DOMAINS             # Allowed image domains
 NUXT_PUBLIC_GTAG_ID            # Google Analytics ID (optional)
-NUXT_PUBLIC_RESEND_API_KEY     # Resend API key
+NUXT_RESEND_API_KEY            # Resend API key (server-only secret)
 NUXT_CONTACT_TO_ADDRESS        # Contact form recipient email
 NUXT_CONTACT_FROM_ADDRESS      # Contact form sender email
 NUXT_PUBLIC_TURNSTILE_SITE_KEY # Turnstile site key (client)
 NUXT_TURNSTILE_SECRET_KEY      # Turnstile secret key (server)
+```
+
+## Cloudflare Workers Deployment
+
+Non-secret variables are defined in `wrangler.toml` under `[vars]`.
+
+Secrets must be set via the Cloudflare dashboard or CLI — never commit them:
+
+```bash
+npx wrangler secret put NUXT_RESEND_API_KEY
+npx wrangler secret put NUXT_TURNSTILE_SECRET_KEY
+```
+
+Deploy after building:
+
+```bash
+bun run build
+npx wrangler --cwd .output deploy
 ```
