@@ -14,7 +14,7 @@ export default defineNuxtConfig({
     format: ['webp'],
     quality: 80,
     cloudflare: {
-      baseURL: process.env.NUXT_MEDIA_BASE_URL || 'http://localhost:8787',
+      baseURL: process.env.NUXT_CLOUDFLARE_IMAGE_BASE_URL || '',
     }
   },
 

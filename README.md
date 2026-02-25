@@ -54,7 +54,8 @@ Copy `.env.template` to `.env` and fill in values.
 
 ```
 NUXT_CMS_BASE_URL              # CMS base URL
-NUXT_MEDIA_BASE_URL            # Cloudflare image provider URL
+NUXT_MEDIA_BASE_URL            # CMS media origin for image src URLs
+NUXT_CLOUDFLARE_IMAGE_BASE_URL # Site domain for Cloudflare Image Resizing (e.g. https://thekevshot.com)
 NUXT_IMAGE_DOMAINS             # Allowed image domains
 NUXT_PUBLIC_GTAG_ID            # Google Analytics ID (optional)
 NUXT_RESEND_API_KEY            # Resend API key (server-only secret)

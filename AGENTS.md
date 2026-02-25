@@ -320,7 +320,8 @@ The source of truth for environment variables is `.env.template`. Copy it to `.e
 | Variable | Description | Default |
 |----------|-------------|---------|
 | `NUXT_CMS_BASE_URL` | Base URL for the headless CMS | `http://localhost:8787` |
-| `NUXT_MEDIA_BASE_URL` | Base URL for Cloudflare image provider | `http://localhost:8787` |
+| `NUXT_MEDIA_BASE_URL` | CMS media origin used to build image `src` URLs | `http://localhost:8787` |
+| `NUXT_CLOUDFLARE_IMAGE_BASE_URL` | Site domain (zone) for Cloudflare Image Resizing (e.g. `https://thekevshot.com`). Leave empty in dev to disable resizing. | *(empty)* |
 | `NUXT_IMAGE_DOMAINS` | Allowed domains for `@nuxt/image` | `localhost:8787` |
 | `NUXT_PUBLIC_GTAG_ID` | Google Analytics measurement ID | *(disabled if unset)* |
 | `NUXT_RESEND_API_KEY` | Resend API key for sending contact form emails (server-only secret) | *(required)* |
