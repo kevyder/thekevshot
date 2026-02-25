@@ -282,16 +282,20 @@ useSeoMeta({
 
 ## Environment Variables
 
+The source of truth for environment variables is `.env.template`. Copy it to `.env` and fill in values.
+
 | Variable | Description | Default |
 |----------|-------------|---------|
+| `NUXT_ENV` | Environment mode | `development` |
 | `NUXT_CMS_BASE_URL` | Base URL for the headless CMS | `http://localhost:8787` |
 | `NUXT_MEDIA_BASE_URL` | Base URL for Cloudflare image provider | `http://localhost:8787` |
-| `NUXT_RESEND_API_KEY` | Resend API key for sending contact form emails | *(required)* |
+| `NUXT_IMAGE_DOMAINS` | Allowed domains for `@nuxt/image` | `localhost:8787` |
+| `NUXT_GTAG_ID` | Google Analytics measurement ID | *(disabled if unset)* |
+| `NUXT_PUBLIC_RESEND_API_KEY` | Resend API key for sending contact form emails | *(required)* |
 | `NUXT_CONTACT_TO_ADDRESS` | Recipient email for contact form submissions | *(required)* |
-| `NUXT_CONTACT_FROM_ADDRESS` | Sender "From" address for contact emails | `noreply@thekevshot.com` |
+| `NUXT_CONTACT_FROM_ADDRESS` | Sender "From" address for contact emails | *(required)* |
 | `NUXT_PUBLIC_TURNSTILE_SITE_KEY` | Cloudflare Turnstile site key (client-side widget) | *(required)* |
 | `NUXT_TURNSTILE_SECRET_KEY` | Cloudflare Turnstile secret key (server-side verification) | *(required)* |
-| `NUXT_GTAG_ID` | Google Analytics measurement ID | *(disabled if unset)* |
 
 ---
 
@@ -401,3 +405,20 @@ All fields are required. First Name and Last Name appear side-by-side on desktop
 - **Homepage:** Full-viewport photo carousel, no scrolling
 - **Carousel:** Single photo with fade transitions, centered caption, arrow controls on sides
 - **Contact page:** Centered form (600px max-width), scrollable, labels above inputs, name fields side-by-side on desktop
+
+---
+
+## Documentation Maintenance
+
+The project has two documentation files with distinct purposes:
+
+- **`README.md`** — Minimal personal reference. Covers commands, dependency versions, project structure, and environment variables. Keep it concise.
+- **`AGENTS.md`** — Detailed implementation guide for AI agents. Covers code style, patterns, architecture decisions, and feature specifications.
+
+Both files reference `.env.template` as the source of truth for environment variables.
+
+When making changes to dependencies, scripts, folder structure, or environment variables, update all three files together:
+
+1. `.env.template` — Add/remove/rename variables
+2. `README.md` — Update commands, versions, structure, or env var list
+3. `AGENTS.md` — Update relevant sections with implementation details
