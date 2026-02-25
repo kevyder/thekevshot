@@ -47,7 +47,7 @@ export default defineNuxtConfig({
     mediaBaseUrl: process.env.NUXT_MEDIA_BASE_URL || 'http://localhost:8787',
 
     // Contact form / Resend - server-only
-    resendApiKey: process.env.NUXT_PUBLIC_RESEND_API_KEY,
+    resendApiKey: process.env.RESEND_API_KEY,
     contactToAddress: process.env.NUXT_CONTACT_TO_ADDRESS,
     contactFromAddress: process.env.NUXT_CONTACT_FROM_ADDRESS,
 

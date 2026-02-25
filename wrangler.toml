@@ -1,6 +1,8 @@
 name = "thekevshot"
 [observability]
+[observability.logs]
 enabled = true
+invocation_logs = false
 
 [vars]
 NUXT_CMS_BASE_URL="https://cms.thekevshot.com"
