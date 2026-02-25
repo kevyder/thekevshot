@@ -1,4 +1,0 @@
-User-agent: *
-Disallow:
-Disallow: /admin/
-Sitemap: https://thekevshot.com/sitemap.xml
