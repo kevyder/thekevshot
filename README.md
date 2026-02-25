@@ -1,75 +1,66 @@
-# Nuxt Minimal Starter
+# THEKEVSHOT
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+Kevin Rodriguez photography portfolio. Nuxt 4, TypeScript, Bun. Contact form with Resend + Turnstile. Deployed to Cloudflare.
 
-## Setup
-
-Make sure to install dependencies:
+## Commands
 
 ```bash
-# npm
-npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
+bun install            # Install dependencies
+bun run dev            # Dev server (http://localhost:3000)
+bun run build          # Production build
+bun run generate       # Static site generation
+bun run preview        # Preview production build
+bunx nuxi typecheck    # Type checking
 ```
 
-## Development Server
+## Dependencies
 
-Start the development server on `http://localhost:3000`:
+| Package              | Version |
+| -------------------- | ------- |
+| nuxt                 | 4.3.1   |
+| vue                  | 3.5.28  |
+| vue-router           | 4.6.4   |
+| zod                  | 4.3.6   |
+| resend               | 6.9.2   |
+| @nuxtjs/turnstile    | 1.1.1   |
+| @nuxt/image          | 2.0.0   |
+| nuxt-gtag            | 4.1.0   |
 
-```bash
-# npm
-npm run dev
+## Structure
 
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
+```
+app/
+  app.vue                    # Root component
+  components/
+    ContactForm.vue          # Contact form (validation, Turnstile, thank-you state)
+    PhotoCarousel.vue        # Single-photo carousel with fade transitions
+    SiteNavbar.vue           # Navbar (Home, Contact, Instagram)
+  pages/
+    index.vue                # Homepage (photo carousel)
+    contact.vue              # Contact page
+  assets/css/main.css        # Global styles
+server/
+  api/
+    contact.post.ts          # Contact form endpoint (Zod, rate limit, Resend)
+    main.get.ts              # Proxies CMS, filters published items
+public/                      # Static assets
+nuxt.config.ts
+tsconfig.json
 ```
 
-## Production
+## Environment Variables
 
-Build the application for production:
+Copy `.env.template` to `.env` and fill in values.
 
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
 ```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
+NUXT_ENV                       # development | production
+NUXT_CMS_BASE_URL              # CMS base URL
+NUXT_MEDIA_BASE_URL            # Cloudflare image provider URL
+NUXT_IMAGE_DOMAINS             # Allowed image domains
+NUXT_GTAG_ID                   # Google Analytics ID (optional)
+NUXT_PUBLIC_RESEND_API_KEY     # Resend API key
+NUXT_CONTACT_TO_ADDRESS        # Contact form recipient email
+NUXT_CONTACT_FROM_ADDRESS      # Contact form sender email
+NUXT_PUBLIC_TURNSTILE_SITE_KEY # Turnstile site key (client)
+NUXT_TURNSTILE_SECRET_KEY      # Turnstile secret key (server)
 ```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
