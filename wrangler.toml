@@ -1,10 +1,11 @@
+name = "thekevshot"
 [observability]
 enabled = true
 
 [vars]
 NUXT_ENV="production"
 NUXT_CMS_BASE_URL="https://cms.thekevshot.com"
-NUXT_MEDIA_BASE_URL="https://media.thekevshot.com"
+NUXT_MEDIA_BASE_URL="https://cms.thekevshot.com"
 NUXT_IMAGE_DOMAINS="thekevshot.com"
 
 # resend setup
