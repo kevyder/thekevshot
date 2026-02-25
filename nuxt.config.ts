@@ -25,6 +25,22 @@ export default defineNuxtConfig({
     siteKey: process.env.NUXT_PUBLIC_TURNSTILE_SITE_KEY,
   },
 
+  // Nitro server engine configuration
+  nitro: {
+    // @react-email/render is an optional dynamic import in the Resend SDK.
+    // We never use React email templates (we pass raw HTML), so it must be
+    // externalised to prevent Rollup from failing on the Cloudflare Pages
+    // preset where unresolved externals are not allowed.
+    rollupConfig: {
+      external: ['@react-email/render'],
+    },
+    // Enable Node.js API compatibility for Cloudflare Workers/Pages.
+    // Required by dependencies like the Resend SDK that use Node built-ins.
+    cloudflare: {
+      nodeCompat: true,
+    },
+  },
+
   runtimeConfig: {
     // Server-only config - override with NUXT_CMS_BASE_URL env var
     cmsBaseUrl: process.env.NUXT_CMS_BASE_URL || 'http://localhost:8787',
