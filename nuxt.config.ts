@@ -9,13 +9,24 @@ export default defineNuxtConfig({
   modules: ['@nuxt/image', 'nuxt-gtag', '@nuxtjs/turnstile'],
 
   // Modules configuration
+  // In production Cloudflare Image Resizing handles format negotiation,
+  // responsive widths, and quality. Locally there is no /cdn-cgi/image/
+  // endpoint, so we fall back to the "none" provider which passes the raw
+  // CMS URL through unchanged.
   image: {
-    provider: 'cloudflare',
-    format: ['webp'],
+    provider: process.env.NUXT_CLOUDFLARE_IMAGE_BASE_URL ? 'cloudflare' : 'none',
+    format: ['avif', 'webp'],
     quality: 80,
+    densities: [1, 2],
+    screens: {
+      sm: 480,
+      md: 768,
+      lg: 1024,
+      xl: 1080,
+    },
     cloudflare: {
       baseURL: process.env.NUXT_CLOUDFLARE_IMAGE_BASE_URL || '',
-    }
+    },
   },
 
   gtag: {

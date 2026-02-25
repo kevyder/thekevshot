@@ -71,13 +71,17 @@ onUnmounted(() => {
             class="carousel-item"
             :class="{ 'is-active': index === currentIndex }"
           >
-            <NuxtImg
-              provider="cloudflare"
+            <NuxtPicture
               :src="photo.src"
               :alt="photo.alt"
+              width="1080"
               height="1080"
-              class="carousel-image"
-              draggable="false"
+              sizes="480px sm:768px lg:1024px xl:1080px"
+              fit="contain"
+              :preload="index === 0"
+              :loading="index === 0 ? 'eager' : 'lazy'"
+              class="carousel-picture"
+              :img-attrs="{ class: 'carousel-image', draggable: 'false' }"
             />
           </div>
         </template>
@@ -157,7 +161,11 @@ onUnmounted(() => {
   pointer-events: auto;
 }
 
-.carousel-image {
+.carousel-picture {
+  display: contents;
+}
+
+.carousel-picture :deep(.carousel-image) {
   width: 100%;
   max-height: 100%;
   object-fit: contain;
