@@ -74,8 +74,6 @@ onUnmounted(() => {
             <NuxtPicture
               :src="photo.src"
               :alt="photo.alt"
-              width="1080"
-              height="1080"
               sizes="480px sm:768px lg:1024px xl:1080px"
               fit="contain"
               :preload="index === 0"

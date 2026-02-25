@@ -10,11 +10,12 @@ export default defineNuxtConfig({
 
   // Modules configuration
   // In production Cloudflare Image Resizing handles format negotiation,
-  // responsive widths, and quality. Locally there is no /cdn-cgi/image/
-  // endpoint, so we fall back to the "none" provider which passes the raw
-  // CMS URL through unchanged.
+  // responsive widths, and quality. In dev there is no /cdn-cgi/image/
+  // endpoint, so the "none" provider passes the raw CMS URL through
+  // unchanged.  The provider choice is baked at build time so we key off
+  // NODE_ENV rather than a runtime variable.
   image: {
-    provider: process.env.NUXT_CLOUDFLARE_IMAGE_BASE_URL ? 'cloudflare' : 'none',
+    provider: process.env.NODE_ENV === 'production' ? 'cloudflare' : 'none',
     format: ['avif', 'webp'],
     quality: 80,
     densities: [1, 2],
@@ -25,7 +26,7 @@ export default defineNuxtConfig({
       xl: 1080,
     },
     cloudflare: {
-      baseURL: process.env.NUXT_CLOUDFLARE_IMAGE_BASE_URL || '',
+      baseURL: process.env.NUXT_CLOUDFLARE_IMAGE_BASE_URL || '/',
     },
   },
 
