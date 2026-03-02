@@ -16,8 +16,8 @@ export default defineNuxtConfig({
   // NODE_ENV rather than a runtime variable.
   image: {
     provider: process.env.NODE_ENV === 'production' ? 'cloudflare' : 'none',
-    format: ['avif', 'webp'],
-    quality: 80,
+    format: ['avif'],
+    quality: 70,
     densities: [1, 2],
     screens: {
       sm: 480,
