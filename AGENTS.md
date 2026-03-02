@@ -60,10 +60,11 @@ thekevshot/
 │   ├── components/         # Vue components
 │   │   ├── ContactForm.vue     # Contact form with client validation, thank-you state
 │   │   ├── PhotoCarousel.vue   # Single-photo carousel with fade transitions
-│   │   └── SiteNavbar.vue      # Minimalist uppercase navbar (Home, Contact, Instagram)
+│   │   └── SiteNavbar.vue      # Minimalist navbar with HOME, CONTACT links; desktop social icons, mobile social text links
 │   ├── pages/              # File-based routing
 │   │   ├── contact.vue         # Contact page with SEO meta + ContactForm
-│   │   └── index.vue           # Homepage with photo carousel
+│   │   ├── index.vue           # Homepage with photo carousel
+│   │   └── links.vue           # Linktree-style page with profile image, subtitle, and social/external links
 │   ├── layouts/            # Page layouts
 │   ├── composables/        # Vue composables (auto-imported)
 │   └── assets/
@@ -419,6 +420,116 @@ All fields are required. First Name and Last Name appear side-by-side on desktop
 
 ---
 
+## Links Page
+
+The `/links` page is a linktree-style landing that aggregates all of Kevin's social media and external links in a clean, mobile-first layout.
+
+### Layout & Design
+
+- **Profile image:** Circular (120px on desktop, 100px on mobile), centered at top with shadow
+- **Subtitle:** "Photographer & cat person" in Hind, weight 400
+- **Title:** "THEKEVSHOT - Links" in Oswald, weight 800, uppercase
+- **Link buttons:** Full-width (max 400px), stacked vertically, minimalist design with hover effects
+- **Spacing:** Content anchored to top with minimal bottom padding, no forced full-viewport height
+- **Responsive:** Mobile-first, stacks cleanly on all breakpoints (320px+)
+
+### Data Fetching
+
+The page fetches links from `/api/links` endpoint:
+
+```typescript
+interface Link {
+  id: string
+  title: string
+  url: string
+  order: number
+}
+```
+
+The endpoint proxies and normalizes data from the headless CMS, returning only published links sorted by `order`.
+
+### CMS Endpoint (Links)
+
+```
+GET /api/collections/links/content
+```
+
+CMS response schema for links:
+
+```typescript
+interface CmsLinksItem {
+  id: string
+  status: string
+  data: {
+    title: string          // Link display name
+    url: string            // Target URL
+    order: number          // Sort order (ascending)
+    status: 'draft' | 'published' | 'archived'
+  }
+}
+```
+
+### States
+
+- **Loading:** Shows "Loading links..." text
+- **Error:** Shows "Failed to load links. Please try again later."
+- **Empty:** Shows "No links available yet." (if no published links exist)
+- **Success:** Displays all published links as clickable buttons
+
+---
+
+## Navigation & Social Media
+
+The `SiteNavbar.vue` component displays social media links differently based on screen size:
+
+### Desktop (≥768px)
+
+- Shows **icon-only links** at the right end of navbar
+- Three platforms: Instagram, TikTok, YouTube
+- Icons are 24×24px black lines (no fills)
+- Hover effect: Gray (#666) → Black (#000) via CSS filter
+- Focus-visible outline for accessibility
+- Visually separated from main nav with left border
+
+### Mobile (<768px)
+
+- Shows **text links** in hamburger menu
+- Same three platforms with full text names (INSTAGRAM, TIKTOK, YOUTUBE)
+- Stacked vertically, same styling as other menu items
+- Easy to tap, no icon ambiguity on small screens
+
+### Icon Files
+
+SVG icons stored in `/public/`:
+
+| File | Size | Platform |
+|------|------|----------|
+| `icon-instagram.svg` | 351 bytes | Instagram |
+| `icon-tiktok.svg` | 240 bytes | TikTok |
+| `icon-youtube.svg` | 527 bytes | YouTube |
+
+All icons use:
+- Minimalist line design (no fills or gradients)
+- `stroke="currentColor"` for dynamic color control via CSS
+- `stroke-width="2"` for crisp appearance
+- `xmlns="http://www.w3.org/2000/svg"` for standalone use
+
+### Social Links
+
+| Platform | URL | Desktop | Mobile |
+|----------|-----|---------|--------|
+| Instagram | `https://instagram.com/thekevshot` | Icon | Text |
+| TikTok | `https://tiktok.com/@thekevshot` | Icon | Text |
+| YouTube | `https://youtube.com/@thekevshot` | Icon | Text |
+
+All links:
+- Open in new tab (`target="_blank"`)
+- Have `rel="noopener noreferrer"` for security
+- Include descriptive `aria-label` for accessibility
+- Are keyboard-focusable with visible outline
+
+---
+
 ## Design Specifications
 
 ### Typography
@@ -434,10 +545,11 @@ All fields are required. First Name and Last Name appear side-by-side on desktop
 
 ### Layout
 
-- **Navbar:** Minimalist, brand on left, links on right, uppercase text
+- **Navbar:** Minimalist, brand on left, navigation links and social media icons on right, uppercase text
 - **Homepage:** Full-viewport photo carousel, no scrolling
 - **Carousel:** Single photo with fade transitions, centered caption, arrow controls on sides
 - **Contact page:** Centered form (600px max-width), scrollable, labels above inputs, name fields side-by-side on desktop
+- **Links page:** Vertically stacked content anchored to top, profile image → subtitle → heading → link buttons, minimal bottom padding
 
 ---
 

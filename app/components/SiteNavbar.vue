@@ -1,5 +1,7 @@
 <script setup lang="ts">
 const instagramUrl = 'https://instagram.com/thekevshot'
+const tiktokUrl = 'https://tiktok.com/@thekevshot'
+const youtubeUrl = 'https://youtube.com/@thekevshot'
 
 const menuOpen = ref(false)
 const route = useRoute()
@@ -57,14 +59,38 @@ onUnmounted(() => {
 
       <NuxtLink to="/contact" class="nav-link">CONTACT</NuxtLink>
 
-      <a
-        :href="instagramUrl"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="nav-link"
-      >
-        INSTAGRAM
-      </a>
+      <!-- Social icons (desktop only) -->
+      <div class="social-icons">
+        <a
+          :href="instagramUrl"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Instagram (opens in new tab)"
+          class="social-icon"
+        >
+          <img src="/icon-instagram.svg" alt="" aria-hidden="true" />
+        </a>
+
+        <a
+          :href="tiktokUrl"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="TikTok (opens in new tab)"
+          class="social-icon"
+        >
+          <img src="/icon-tiktok.svg" alt="" aria-hidden="true" />
+        </a>
+
+        <a
+          :href="youtubeUrl"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="YouTube (opens in new tab)"
+          class="social-icon"
+        >
+          <img src="/icon-youtube.svg" alt="" aria-hidden="true" />
+        </a>
+      </div>
     </div>
 
     <!-- Mobile menu overlay -->
@@ -88,6 +114,26 @@ onUnmounted(() => {
             @click="closeMenu"
           >
             INSTAGRAM
+          </a>
+
+          <a
+            :href="tiktokUrl"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="mobile-link"
+            @click="closeMenu"
+          >
+            TIKTOK
+          </a>
+
+          <a
+            :href="youtubeUrl"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="mobile-link"
+            @click="closeMenu"
+          >
+            YOUTUBE
           </a>
         </div>
       </div>
@@ -143,6 +189,46 @@ onUnmounted(() => {
 
 .nav-link.router-link-active {
   color: #000;
+}
+
+/* Social icons (desktop) */
+.social-icons {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-left: 1rem;
+  border-left: 1px solid #e0e0e0;
+  padding-left: 1.5rem;
+}
+
+.social-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  color: #666;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  text-decoration: none;
+  filter: invert(40%) sepia(0%);
+}
+
+.social-icon:hover {
+  color: #000;
+  filter: invert(0%);
+}
+
+.social-icon:focus-visible {
+  outline: 2px solid #000;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+.social-icon img {
+  width: 24px;
+  height: 24px;
+  display: block;
 }
 
 /* Burger button — hidden on desktop */
@@ -241,6 +327,11 @@ onUnmounted(() => {
   }
 
   .navbar-links {
+    display: none;
+  }
+
+  /* Hide social icons on mobile */
+  .social-icons {
     display: none;
   }
 
