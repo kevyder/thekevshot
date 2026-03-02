@@ -70,8 +70,7 @@ const profileImage = '/og-image.webp'
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  min-height: 100vh;
-  padding: 2rem 1.5rem;
+  padding: 2rem 1.5rem 1rem;
   background: #fff;
   color: #111;
 }
@@ -158,7 +157,7 @@ const profileImage = '/og-image.webp'
 /* ---- Responsive ---- */
 @media (max-width: 768px) {
   .links-container {
-    padding: 1.5rem 1rem;
+    padding: 1.5rem 1rem 1rem;
   }
 
   .profile-image {
@@ -190,7 +189,7 @@ const profileImage = '/og-image.webp'
 
 @media (max-width: 480px) {
   .links-container {
-    padding: 1rem 1rem;
+    padding: 1rem 1rem 1rem;
   }
 
   .profile-image {
