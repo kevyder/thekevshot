@@ -104,7 +104,6 @@ onUnmounted(() => {
           v-if="currentPhoto"
           :src="currentPhoto.src"
           :alt="currentPhoto.alt"
-          sizes="100vw"
           fit="contain"
           preload
           loading="eager"
