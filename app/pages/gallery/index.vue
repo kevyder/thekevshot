@@ -37,12 +37,12 @@ const { data: galleries, pending, error } = await useFetch<Gallery[]>('/api/gall
 
     <!-- Success: Grid of galleries -->
     <div v-else class="gallery-grid">
-      <a
-        v-for="gallery in galleries"
-        :key="gallery.id"
-        :href="`/gallery/${gallery.slug}`"
-        class="gallery-card"
-      >
+      <NuxtLink
+         v-for="gallery in galleries"
+         :key="gallery.id"
+         :to="`/gallery/${gallery.slug}`"
+         class="gallery-card"
+       >
         <div class="gallery-image-wrapper">
 
           <!-- <img :src="gallery.presentationImage" :alt="gallery.title" class="gallery-image" /> -->
@@ -59,7 +59,7 @@ const { data: galleries, pending, error } = await useFetch<Gallery[]>('/api/gall
             <h2 class="gallery-title">{{ gallery.title }}</h2>
           </div>
         </div>
-      </a>
+      </NuxtLink>
     </div>
   </div>
 </template>

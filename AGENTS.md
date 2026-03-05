@@ -59,11 +59,14 @@ thekevshot/
 │   ├── app.vue             # Root component (includes SiteNavbar + NuxtPage)
 │   ├── components/         # Vue components
 │   │   ├── ContactForm.vue     # Contact form with client validation, thank-you state
+│   │   ├── GalleryImageViewer.vue # Modal lightbox for gallery image viewing
 │   │   ├── PhotoCarousel.vue   # Single-photo carousel with fade transitions
 │   │   └── SiteNavbar.vue      # Navbar with HOME, GALLERY, CONTACT links; desktop social icons, mobile social text links
 │   ├── pages/              # File-based routing
 │   │   ├── contact.vue         # Contact page with SEO meta + ContactForm
-│   │   ├── gallery.vue         # Gallery page with 2-column grid (desktop) / 1-column (mobile)
+│   │   ├── gallery.vue         # Gallery collection page with 3-column grid (desktop) / 1-column (mobile)
+│   │   ├── gallery/
+│   │   │   └── [id].vue        # Gallery detail page with 4-column image grid + modal viewer
 │   │   ├── index.vue           # Homepage with photo carousel
 │   │   └── links.vue           # Linktree-style page with profile image, subtitle, and social/external links
 │   ├── layouts/            # Page layouts
@@ -76,9 +79,13 @@ thekevshot/
 │   └── api/
 │       ├── contact.post.ts      # Contact form endpoint (Zod, rate limit, Resend)
 │       ├── galleries.get.ts      # Galleries endpoint (proxies CMS, filters published, maps to Gallery[])
+│       ├── galleries/
+│       │   └── [id].get.ts       # Gallery detail endpoint (proxies CMS by ID, returns GalleryDetail with images)
 │       ├── links.get.ts          # Links endpoint (proxies CMS, filters published, sorts by order)
 │       └── main.get.ts           # Photos endpoint (proxies CMS requests, filters published items)
 ├── shared/                 # Code shared between app and server
+│   └── types/
+│       └── gallery.ts           # Shared gallery types (Photo, GalleryDetail)
 ├── nuxt.config.ts          # Nuxt configuration
 └── tsconfig.json           # TypeScript configuration
 ```
@@ -504,9 +511,131 @@ interface CmsGalleryItem {
 
 ### Future Enhancements
 
-- **Gallery detail pages:** Dynamic routes at `/gallery/[slug]` showing all images in a gallery
-- **Lightbox/modal:** Click gallery card to view full images
-- **Image count badge:** Display number of images in gallery
+- **Image count badge:** Display number of images in gallery on collection cards
+
+---
+
+## Gallery Detail Page
+
+The `/gallery/[id]` page displays all images from a specific gallery in a responsive grid with a modal lightbox image viewer. Each gallery image can be clicked to open a full-screen viewer with navigation controls.
+
+### Layout & Design
+
+- **Title:** Gallery title in Oswald, weight 800, uppercase, 2rem, centered
+- **Image grid:**
+  - Desktop (≥768px): 4 columns with responsive gap
+  - Mobile (<768px): 1 column, full-width
+  - Images: 1:1 square aspect ratio, `object-fit: cover`
+  - Hover effect: subtle scale (1.02) + image zoom (1.05) on image hover to indicate clickability
+  - Border radius: 4px on image containers
+- **Image viewer modal:**
+  - Full-screen dark overlay (rgba(0,0,0,0.95))
+  - Centered image display with `object-fit: contain` (preserves aspect ratio)
+  - Navigation: prev/next buttons on sides, keyboard arrows (ArrowLeft/ArrowRight), ESC to close
+  - Close button (X icon) in top-right corner
+  - Click outside modal to close
+  - Image counter: "X of Y" at bottom center
+  - Optional caption display (if available from CMS)
+  - Smooth fade transitions (0.3s) between images
+  - Responsive adjustments for mobile (smaller buttons/padding)
+
+### Data Fetching
+
+The page fetches a single gallery's details from `/api/galleries/[id]` endpoint:
+
+```typescript
+interface Photo {
+  src: string      // Full URL to image
+  alt: string      // Alt text for accessibility
+  caption?: string // Optional image caption
+}
+
+interface GalleryDetail {
+  id: string
+  title: string
+  slug: string
+  presentationImage: string
+  images: Photo[]
+  order: number
+}
+```
+
+### API Endpoint: `/api/galleries/[id].get.ts`
+
+**Purpose:** Fetch detailed gallery data including all images by gallery ID
+
+**CMS Endpoint:**
+```
+GET /api/content/{galleryId}
+```
+
+**CMS Response Schema:**
+```typescript
+interface CmsGalleryItem {
+  id: string
+  title: string
+  slug: string
+  status: 'draft' | 'published' | 'archived'
+  data: {
+    title: string
+    presentationImage: string  // e.g., "/files/uploads/image.webp"
+    order: number
+    images: Array<{ photo: string }>  // Array of image objects
+  }
+}
+```
+
+**Implementation:**
+1. Extract gallery ID from route parameter: `event.context.params?.id`
+2. Fetch from CMS with ID: `GET /api/content/{id}`
+3. Validate: Only return published galleries (status === 'published')
+4. Map to GalleryDetail interface:
+   - `presentationImage = mediaBaseUrl + data.presentationImage` (full URL)
+   - `images = data.images.map(img => ({ src: mediaBaseUrl + img.photo, alt: data.title, caption: undefined }))`
+   - Keep: `id`, `title`, `slug`, `order`
+5. Return `GalleryDetail`
+6. Error handling: 
+   - 400 if no gallery ID provided
+   - 404 if gallery not found or not published
+   - 500 for other errors
+
+### Modal Component: `GalleryImageViewer.vue`
+
+**Purpose:** Reusable modal lightbox component for full-screen image viewing
+
+**Props:**
+- `images: Photo[]` - Array of photos to display
+- `initialIndex?: number` - Which image to start with (default 0)
+- `isOpen: boolean` - Controls modal visibility with `v-show`
+
+**Emits:**
+- `close` - Fired when user closes the modal
+
+**Features:**
+- Modal overlay with click-outside to close
+- Keyboard navigation: ArrowLeft/ArrowRight for navigation, ESC to close
+- Smooth fade transitions (0.3s ease) between images
+- Image counter display: "X of Y"
+- Close button with hover state
+- Prev/next buttons with hover state
+- Accessibility: `role="dialog"`, `aria-modal="true"`, `aria-label`
+- Body overflow hidden when modal is open (prevent background scroll)
+- Focus management for keyboard-only navigation
+
+### States
+
+- **Loading:** Shows "Loading gallery..." text
+- **Error:** Shows "Failed to load gallery. Please try again later." (red #d32f2f)
+- **Empty:** Shows "No images available in this gallery." (if gallery exists but has no images)
+- **Success:** Displays gallery title + responsive image grid with clickable images
+
+### Routing & Links
+
+- Gallery collection page (`/gallery`) shows all galleries as cards
+- Each card links to `/gallery/{galleryId}` using the gallery ID
+- Gallery detail page renders all images from that gallery
+- Clicking any image in the grid opens the modal viewer at that image index
+- Modal navigation allows cycling through all images for the gallery
 
 ---
 
