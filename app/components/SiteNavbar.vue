@@ -152,10 +152,10 @@ onUnmounted(() => {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 64px;
-  padding: 0 2rem;
+  height: 90px;
+  width: 100%;
   background: #fff;
-  margin: 1% 15% 0 15%;
+  padding: 2rem 5rem;
   position: relative;
 }
 
@@ -318,7 +318,7 @@ onUnmounted(() => {
 @media (max-width: 768px) {
   .navbar {
     padding: 0 1.25rem;
-    margin: 0;
+    margin: 0.75rem 0;
     height: 56px;
   }
 
