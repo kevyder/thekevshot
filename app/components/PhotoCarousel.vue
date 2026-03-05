@@ -83,12 +83,6 @@ onUnmounted(() => {
             />
           </div>
         </template>
-
-        <div class="carousel-info">
-          <p v-if="currentPhoto?.caption" class="carousel-caption">
-            {{ currentPhoto.caption }}
-          </p>
-        </div>
       </div>
 
       <button
@@ -170,17 +164,6 @@ onUnmounted(() => {
   user-select: none;
 }
 
-.carousel-info {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0.5rem 0;
-}
-
 .carousel-caption {
   margin: 0;
   font-size: 0.95rem;
@@ -225,12 +208,6 @@ onUnmounted(() => {
   .nav-btn svg {
     width: 32px;
     height: 32px;
-  }
-
-  .carousel-info {
-    flex-direction: column;
-    align-items: center;
-    gap: 0.25rem;
   }
 }
 

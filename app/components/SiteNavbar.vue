@@ -106,11 +106,9 @@ onUnmounted(() => {
         <div class="mobile-menu-links">
           <NuxtLink to="/" class="mobile-link" @click="closeMenu">HOME</NuxtLink>
 
-          <NuxtLink to="/contact" class="mobile-link" @click="closeMenu">CONTACT</NuxtLink>
-
           <NuxtLink to="/gallery" class="mobile-link" @click="closeMenu">GALLERY</NuxtLink>
 
-          <NuxtLink to="/links" class="mobile-link" @click="closeMenu">LINKS</NuxtLink>
+          <NuxtLink to="/contact" class="mobile-link" @click="closeMenu">CONTACT</NuxtLink>
 
           <a
             :href="instagramUrl"
