@@ -57,6 +57,8 @@ onUnmounted(() => {
     <div class="navbar-links">
       <NuxtLink to="/" class="nav-link">HOME</NuxtLink>
 
+      <NuxtLink to="/gallery" class="nav-link">GALLERY</NuxtLink>
+
       <NuxtLink to="/contact" class="nav-link">CONTACT</NuxtLink>
 
       <!-- Social icons (desktop only) -->
@@ -105,6 +107,10 @@ onUnmounted(() => {
           <NuxtLink to="/" class="mobile-link" @click="closeMenu">HOME</NuxtLink>
 
           <NuxtLink to="/contact" class="mobile-link" @click="closeMenu">CONTACT</NuxtLink>
+
+          <NuxtLink to="/gallery" class="mobile-link" @click="closeMenu">GALLERY</NuxtLink>
+
+          <NuxtLink to="/links" class="mobile-link" @click="closeMenu">LINKS</NuxtLink>
 
           <a
             :href="instagramUrl"

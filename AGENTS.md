@@ -60,9 +60,10 @@ thekevshot/
 │   ├── components/         # Vue components
 │   │   ├── ContactForm.vue     # Contact form with client validation, thank-you state
 │   │   ├── PhotoCarousel.vue   # Single-photo carousel with fade transitions
-│   │   └── SiteNavbar.vue      # Minimalist navbar with HOME, CONTACT links; desktop social icons, mobile social text links
+│   │   └── SiteNavbar.vue      # Navbar with HOME, GALLERY, CONTACT links; desktop social icons, mobile social text links
 │   ├── pages/              # File-based routing
 │   │   ├── contact.vue         # Contact page with SEO meta + ContactForm
+│   │   ├── gallery.vue         # Gallery page with 2-column grid (desktop) / 1-column (mobile)
 │   │   ├── index.vue           # Homepage with photo carousel
 │   │   └── links.vue           # Linktree-style page with profile image, subtitle, and social/external links
 │   ├── layouts/            # Page layouts
@@ -74,7 +75,9 @@ thekevshot/
 ├── server/                 # Server routes and middleware (Nitro)
 │   └── api/
 │       ├── contact.post.ts      # Contact form endpoint (Zod, rate limit, Resend)
-│       └── main.get.ts          # Proxies CMS requests, filters published items
+│       ├── galleries.get.ts      # Galleries endpoint (proxies CMS, filters published, maps to Gallery[])
+│       ├── links.get.ts          # Links endpoint (proxies CMS, filters published, sorts by order)
+│       └── main.get.ts           # Photos endpoint (proxies CMS requests, filters published items)
 ├── shared/                 # Code shared between app and server
 ├── nuxt.config.ts          # Nuxt configuration
 └── tsconfig.json           # TypeScript configuration
@@ -420,6 +423,93 @@ All fields are required. First Name and Last Name appear side-by-side on desktop
 
 ---
 
+## Gallery Page
+
+The `/gallery` page displays all published galleries from the CMS in a responsive grid on desktop and 1-column on mobile. Each gallery card shows a presentation image with an overlay displaying the gallery title centered on the image.
+
+### Layout & Design
+
+- **Title:** "GALLERY" in Oswald, weight 800, uppercase, 2rem, centered
+- **Grid layout:** 3 columns (desktop ≥768px), 1 column (mobile <768px)
+- **Gallery cards:** Flex column with hover effects
+  - Card lift: `translateY(-4px)` on hover (0.2s ease transition)
+  - Image zoom: `scale(1.05)` on hover (0.4s ease-out transition)
+  - Overlay darken: Gradient darkens from rgba(0,0,0,0.6) to rgba(0,0,0,0.75) on hover (0.4s ease-out transition)
+- **Image:** 1:1 aspect ratio, `object-fit: cover`, lazy loading via NuxtImg
+- **Image overlay:**
+  - Gradient background: transparent at top → dark (rgba(0,0,0,0.6)) at bottom
+  - Gallery title: Centered vertically on image, white text, Oswald weight 800, uppercase
+  - Font size: 1.25rem (desktop), 1rem (mobile)
+  - Text shadow: 0 2px 4px rgba(0,0,0,0.3) for readability
+- **Spacing:** Content anchored to top with minimal bottom padding (1rem)
+- **Responsive:** Mobile-first design, gap spacing scales with breakpoints
+
+### Data Fetching
+
+The page fetches galleries from `/api/galleries` endpoint:
+
+```typescript
+interface Gallery {
+  id: string
+  title: string
+  slug: string
+  presentationImage: string
+  imageCount: number
+  order: number
+}
+```
+
+### API Endpoint: `/api/galleries.get.ts`
+
+**Purpose:** Proxy CMS `/api/collections/galleries/content` and normalize gallery data
+
+**CMS Endpoint:**
+```
+GET /api/collections/galleries/content?sort=order&limit=12
+```
+
+**CMS Response Schema:**
+```typescript
+interface CmsGalleryItem {
+  id: string
+  title: string
+  slug: string
+  status: 'draft' | 'published' | 'archived'
+  data: {
+    title: string
+    presentationImage: string  // e.g., "/files/uploads/image.webp"
+    order: number
+    images: Array<{ photo: string }>  // Array of image objects
+  }
+}
+```
+
+**Implementation:**
+1. Fetch from CMS with sort and limit
+2. Filter: Only items with `status === 'published'`
+3. Map to Gallery interface:
+   - `presentationImage = mediaBaseUrl + data.presentationImage` (full URL)
+   - `imageCount = data.images.length`
+   - Keep: `id`, `title`, `slug`, `order`
+4. Sort by `order` (ascending)
+5. Return `Gallery[]`
+6. Error handling: 500 error with message
+
+### States
+
+- **Loading:** Shows "Loading galleries..." text
+- **Error:** Shows "Failed to load galleries. Please try again later." (red #d32f2f)
+- **Empty:** Shows "No galleries available yet." (if no published galleries exist)
+- **Success:** Displays all published galleries as cards in responsive grid
+
+### Future Enhancements
+
+- **Gallery detail pages:** Dynamic routes at `/gallery/[slug]` showing all images in a gallery
+- **Lightbox/modal:** Click gallery card to view full images
+- **Image count badge:** Display number of images in gallery
+
+---
+
 ## Links Page
 
 The `/links` page is a linktree-style landing that aggregates all of Kevin's social media and external links in a clean, mobile-first layout.
@@ -545,10 +635,11 @@ All links:
 
 ### Layout
 
-- **Navbar:** Minimalist, brand on left, navigation links and social media icons on right, uppercase text
+- **Navbar:** Minimalist, brand on left, navigation links (HOME, CONTACT, GALLERY, LINKS) and social media icons on right, uppercase text
 - **Homepage:** Full-viewport photo carousel, no scrolling
 - **Carousel:** Single photo with fade transitions, centered caption, arrow controls on sides
 - **Contact page:** Centered form (600px max-width), scrollable, labels above inputs, name fields side-by-side on desktop
+- **Gallery page:** 3-column grid (desktop) / 1-column (mobile), gallery cards with image overlay and title, scrollable, content anchored to top
 - **Links page:** Vertically stacked content anchored to top, profile image → subtitle → heading → link buttons, minimal bottom padding
 
 ---
