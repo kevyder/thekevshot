@@ -31,10 +31,12 @@ useSeoMeta({
   text-transform: uppercase;
   letter-spacing: 0.05em;
   margin: 0 0 0.5rem;
+  text-align: center;
 }
 
 .page-description {
   color: #666;
   margin: 0 0 2rem;
+  text-align: center;
 }
 </style>
