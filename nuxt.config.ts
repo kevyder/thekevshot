@@ -6,7 +6,7 @@ export default defineNuxtConfig({
   css: ['~/assets/css/main.css'],
 
   // Modules
-  modules: ['@nuxt/image', 'nuxt-gtag', '@nuxtjs/turnstile'],
+  modules: ['@nuxt/image', 'nuxt-gtag', '@nuxtjs/turnstile', '@nuxtjs/sitemap'],
 
   // Modules configuration
   // In production Cloudflare Image Resizing handles format negotiation,
