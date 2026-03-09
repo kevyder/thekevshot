@@ -25,6 +25,13 @@ bunx nuxi typecheck    # Type checking
 | @nuxtjs/turnstile    | 1.1.1   |
 | @nuxt/image          | 2.0.0   |
 | nuxt-gtag            | 4.1.0   |
+| @nuxtjs/sitemap      | 7.6.0   |
+
+Dev dependencies:
+
+| Package        | Version |
+| -------------- | ------- |
+| @types/node    | 25.3.0  |
 
 ## Structure
 
@@ -63,6 +70,8 @@ NUXT_CONTACT_TO_ADDRESS        # Contact form recipient email
 NUXT_CONTACT_FROM_ADDRESS      # Contact form sender email
 NUXT_PUBLIC_TURNSTILE_SITE_KEY # Turnstile site key (client)
 NUXT_TURNSTILE_SECRET_KEY      # Turnstile secret key (server)
+NUXT_SITE_URL                  # Site URL used for sitemap and site config (e.g. https://thekevshot.com)
+NUXT_SITE_NAME                 # Site name used in site config (e.g. thekevshot.com)
 ```
 
 ## Cloudflare Workers Deployment
