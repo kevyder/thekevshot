@@ -17,15 +17,15 @@ bunx nuxi typecheck    # Type checking
 
 | Package              | Version |
 | -------------------- | ------- |
-| nuxt                 | 4.3.1   |
+| nuxt                 | 4.4.2   |
 | vue                  | 3.5.28  |
-| vue-router           | 4.6.4   |
+| vue-router           | 5.0.4   |
 | zod                  | 4.3.6   |
 | resend               | 6.9.2   |
-| @nuxtjs/turnstile    | 1.1.1   |
+| @nuxtjs/turnstile    | 1.1.2   |
 | @nuxt/image          | 2.0.0   |
 | nuxt-gtag            | 4.1.0   |
-| @nuxtjs/sitemap      | 7.6.0   |
+| @nuxtjs/sitemap      | 8.0.12   |
 
 Dev dependencies:
 
