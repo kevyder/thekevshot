@@ -2,6 +2,7 @@
 const instagramUrl = 'https://instagram.com/thekevshot'
 const tiktokUrl = 'https://tiktok.com/@thekevshot'
 const youtubeUrl = 'https://youtube.com/@thekevshot'
+const workshopsUrl = 'https://bgtspc.com/'
 
 const menuOpen = ref(false)
 const route = useRoute()
@@ -61,10 +62,22 @@ onUnmounted(() => {
 
       <NuxtLink to="/about" class="nav-link">ABOUT</NuxtLink>
 
+      <a :href="workshopsUrl" target="_blank" rel="noopener noreferrer" class="nav-link" @click="closeMenu">WORKSHOPS</a>
+
       <NuxtLink to="/contact" class="nav-link">CONTACT</NuxtLink>
 
       <!-- Social icons (desktop only) -->
       <div class="social-icons">
+        <a
+          :href="youtubeUrl"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="YouTube (opens in new tab)"
+          class="social-icon"
+        >
+          <img src="/icon-youtube.svg" alt="" aria-hidden="true" />
+        </a>
+
         <a
           :href="instagramUrl"
           target="_blank"
@@ -84,16 +97,6 @@ onUnmounted(() => {
         >
           <img src="/icon-tiktok.svg" alt="" aria-hidden="true" />
         </a>
-
-        <a
-          :href="youtubeUrl"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="YouTube (opens in new tab)"
-          class="social-icon"
-        >
-          <img src="/icon-youtube.svg" alt="" aria-hidden="true" />
-        </a>
       </div>
     </div>
 
@@ -112,7 +115,19 @@ onUnmounted(() => {
 
           <NuxtLink to="/about" class="mobile-link" @click="closeMenu">ABOUT</NuxtLink>
 
+          <a :href="workshopsUrl" target="_blank" rel="noopener noreferrer" class="mobile-link" @click="closeMenu">WORKSHOPS</a>
+
           <NuxtLink to="/contact" class="mobile-link" @click="closeMenu">CONTACT</NuxtLink>
+
+          <a
+            :href="youtubeUrl"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="mobile-link"
+            @click="closeMenu"
+          >
+            YOUTUBE
+          </a>
 
           <a
             :href="instagramUrl"
@@ -132,16 +147,6 @@ onUnmounted(() => {
             @click="closeMenu"
           >
             TIKTOK
-          </a>
-
-          <a
-            :href="youtubeUrl"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="mobile-link"
-            @click="closeMenu"
-          >
-            YOUTUBE
           </a>
         </div>
       </div>
