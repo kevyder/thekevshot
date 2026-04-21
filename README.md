@@ -18,20 +18,20 @@ bunx nuxi typecheck    # Type checking
 | Package              | Version |
 | -------------------- | ------- |
 | nuxt                 | 4.4.2   |
-| vue                  | 3.5.28  |
+| vue                  | 3.5.32  |
 | vue-router           | 5.0.4   |
 | zod                  | 4.3.6   |
-| resend               | 6.9.2   |
+| resend               | 6.12.2  |
 | @nuxtjs/turnstile    | 1.1.2   |
 | @nuxt/image          | 2.0.0   |
 | nuxt-gtag            | 4.1.0   |
-| @nuxtjs/sitemap      | 8.0.12   |
+| @nuxtjs/sitemap      | 8.0.13  |
 
 Dev dependencies:
 
 | Package        | Version |
 | -------------- | ------- |
-| @types/node    | 25.3.0  |
+| @types/node    | 25.6.0  |
 
 ## Structure
 
