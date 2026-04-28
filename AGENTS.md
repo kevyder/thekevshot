@@ -255,6 +255,23 @@ This is a photography portfolio - images are critical:
 </template>
 ```
 
+### Cloudflare Image Resizing
+
+The site uses `@nuxt/image` with the `cloudflare` provider in production for edge-side image transformation. Configuration lives in `nuxt.config.ts`:
+
+```typescript
+image: {
+  provider: process.env.NODE_ENV === 'production' ? 'cloudflare' : 'none',
+  format: ['webp'],  // Use WebP over AVIF — AVIF encoding can cause 502 timeouts with large/complex images
+  quality: 70,
+  cloudflare: {
+    baseURL: process.env.NUXT_CLOUDFLARE_IMAGE_BASE_URL || '/',
+  },
+}
+```
+
+**Troubleshooting 502 errors:** If images fail to load intermittently with a 502 from Cloudflare's `/cdn-cgi/image/` endpoint, the origin (CMS) is slow to respond during format conversion. Switching from `avif` to `webp` in the `format` array typically resolves this, as WebP encoding is less computationally intensive. Also ensure your CMS is publicly accessible and responsive.
+
 ---
 
 ## Nuxt Patterns
