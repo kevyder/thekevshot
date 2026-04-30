@@ -50,6 +50,7 @@ const { data: galleries, pending, error } = await useFetch<Gallery[]>('/api/gall
             :src="gallery.presentationImage"
             :alt="gallery.title"
             sizes="480px"
+            densities="1"
             fit="cover"
             class="gallery-picture"
             :img-attrs="{ class: 'gallery-image' }"

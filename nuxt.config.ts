@@ -15,18 +15,26 @@ export default defineNuxtConfig({
   // unchanged.  The provider choice is baked at build time so we key off
   // NODE_ENV rather than a runtime variable.
   image: {
-    provider: process.env.NODE_ENV === 'production' ? 'cloudflare' : 'none',
+    provider: 'imgproxy',
     format: ['webp'],
-    quality: 70,
-    densities: [1, 2],
+    quality: 90,
+    densities: [1],
     screens: {
       sm: 480,
       md: 768,
       lg: 1024,
       xl: 1080,
+      '2xl': 1080,
     },
-    cloudflare: {
-      baseURL: process.env.NUXT_CLOUDFLARE_IMAGE_BASE_URL || '/',
+    providers: {
+      imgproxy: {
+        name: 'imgproxy',
+        provider: '~/providers/imgproxy.ts',
+        options: {
+          baseURL: process.env.NUXT_IMGPROXY_URL || 'https://images.thekevshot.com/',
+          sourceBaseURL: process.env.NUXT_IMGPROXY_SOURCE_URL || 'https://cms.thekevshot.com/',
+        },
+      },
     },
   },
 

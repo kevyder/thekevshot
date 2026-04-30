@@ -60,6 +60,7 @@ useSeoMeta({
               :src="image.src"
               :alt="image.alt"
               sizes="480px"
+              densities="1"
               fit="cover"
               class="grid-image"
             />

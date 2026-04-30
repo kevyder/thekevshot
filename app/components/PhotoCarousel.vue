@@ -75,6 +75,7 @@ onUnmounted(() => {
               :src="photo.src"
               :alt="photo.alt"
               sizes="480px sm:768px lg:1024px xl:1080px"
+              densities="1"
               fit="contain"
               :preload="index === 0"
               :loading="index === 0 ? 'eager' : 'lazy'"
