@@ -1,0 +1,75 @@
+{
+  "version": 1,
+  "skills": {
+    "accessibility": {
+      "source": "addyosmani/web-quality-skills",
+      "sourceType": "autoskills-registry",
+      "computedHash": "bffe3d08cfe92ebad63699f74ce29e35c19850ebfbf474c1463183cfe34d6a09"
+    },
+    "cloudflare": {
+      "source": "cloudflare/skills",
+      "sourceType": "autoskills-registry",
+      "computedHash": "da4a0ac8024248882401e17848856237e063620c7781f47bd89fcdcf72f902b3"
+    },
+    "cloudflare-deploy": {
+      "source": "openai/skills",
+      "sourceType": "autoskills-registry",
+      "computedHash": "a0e0265fb534369d95944a58ab25159b7838f62abdcd86afa2266d69b3309561"
+    },
+    "frontend-design": {
+      "source": "anthropics/skills",
+      "sourceType": "autoskills-registry",
+      "computedHash": "82fb11a63fb1e35ee2469516ed02d54695f783115b1540c0e783197af4240a3a"
+    },
+    "nuxt": {
+      "source": "antfu/skills",
+      "sourceType": "autoskills-registry",
+      "computedHash": "8a52f7cd26bc9bbc477a086b9c33a901fd6c68df8cd7d49417270e44c1ad88c6"
+    },
+    "seo": {
+      "source": "addyosmani/web-quality-skills",
+      "sourceType": "autoskills-registry",
+      "computedHash": "c184da724d1c61ad077f27418ea8e7e88fd54bcdf98165e18be7e4681cbd5e20"
+    },
+    "typescript-advanced-types": {
+      "source": "wshobson/agents",
+      "sourceType": "autoskills-registry",
+      "computedHash": "5ca0e177c6aaaba1889255691224daafdb7d71f317cc70bede1590d3907ded42"
+    },
+    "vue": {
+      "source": "antfu/skills",
+      "sourceType": "autoskills-registry",
+      "computedHash": "4cc429a32520d5a7615d572687c902637459dfd6c92b7faf74afb879247dfbc4"
+    },
+    "vue-best-practices": {
+      "source": "antfu/skills",
+      "sourceType": "autoskills-registry",
+      "computedHash": "1f369104c1aac5c101d71b65a2bd317ad2a1d3ceda160cb5d45da9b389a3f53f"
+    },
+    "vue-debug-guides": {
+      "source": "hyf0/vue-skills",
+      "sourceType": "autoskills-registry",
+      "computedHash": "ef84274bb3af820e3ede22cb55863e6b0755eabe597713707ae9051a81ef3a02"
+    },
+    "web-perf": {
+      "source": "cloudflare/skills",
+      "sourceType": "autoskills-registry",
+      "computedHash": "02a46c6d1c10070034f6030f2e208bb306b14b04e535d3990ca4310b907e91a5"
+    },
+    "workers-best-practices": {
+      "source": "cloudflare/skills",
+      "sourceType": "autoskills-registry",
+      "computedHash": "9661260d852b07de738dd870fc92606b2a44c091b0e5c0df785ae097c26dc382"
+    },
+    "wrangler": {
+      "source": "cloudflare/skills",
+      "sourceType": "autoskills-registry",
+      "computedHash": "d9a05896e7ef591d4c499436ce0a53c510800832de30de866b2c2999efe3f622"
+    },
+    "zod": {
+      "source": "pproenca/dot-skills",
+      "sourceType": "autoskills-registry",
+      "computedHash": "aa8a97195b07763d37494b511f48be90979fd6826c031956c831cfc58f6a24b8"
+    }
+  }
+}
