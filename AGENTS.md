@@ -255,22 +255,29 @@ This is a photography portfolio - images are critical:
 </template>
 ```
 
-### Cloudflare Image Resizing
+### imgproxy Image Transformation
 
-The site uses `@nuxt/image` with the `cloudflare` provider in production for edge-side image transformation. Configuration lives in `nuxt.config.ts`:
+The site uses `@nuxt/image` with a custom `imgproxy` provider for image transformation. The provider is defined in `app/providers/imgproxy.ts` and uses unsigned `/insecure/` URLs — no server-side signing required.
 
 ```typescript
 image: {
-  provider: process.env.NODE_ENV === 'production' ? 'cloudflare' : 'none',
-  format: ['webp'],  // Use WebP over AVIF — AVIF encoding can cause 502 timeouts with large/complex images
+  provider: '~/providers/imgproxy',
+  format: ['webp'],
   quality: 70,
-  cloudflare: {
-    baseURL: process.env.NUXT_CLOUDFLARE_IMAGE_BASE_URL || '/',
+  densities: [1],
+  screens: {
+    sm: 480,
+    md: 768,
+    lg: 1024,
+    xl: 1080,
+    '2xl': 1080,
   },
 }
 ```
 
-**Troubleshooting 502 errors:** If images fail to load intermittently with a 502 from Cloudflare's `/cdn-cgi/image/` endpoint, the origin (CMS) is slow to respond during format conversion. Switching from `avif` to `webp` in the `format` array typically resolves this, as WebP encoding is less computationally intensive. Also ensure your CMS is publicly accessible and responsive.
+**Important:** Always pass `densities="1"` directly on every `NuxtPicture` and `NuxtImg` component. Without it, the component falls back to its internal default `[1, 2]`, generating unwanted 2x srcset variants.
+
+**imgproxy URL format:** `https://images.thekevshot.com/insecure/resize:fit:{width}:0:0:0/quality:70/{base64_source_url}`
 
 ---
 
@@ -349,7 +356,8 @@ The source of truth for environment variables is `.env.template`. Copy it to `.e
 |----------|-------------|---------|
 | `NUXT_CMS_BASE_URL` | Base URL for the headless CMS | `http://localhost:8787` |
 | `NUXT_MEDIA_BASE_URL` | CMS media origin used to build image `src` URLs | `http://localhost:8787` |
-| `NUXT_CLOUDFLARE_IMAGE_BASE_URL` | Site domain (zone) for Cloudflare Image Resizing (e.g. `https://thekevshot.com`). Leave empty in dev to disable resizing. | *(empty)* |
+| `NUXT_IMGPROXY_URL` | imgproxy server URL (e.g. `https://images.thekevshot.com/`) | *(required)* |
+| `NUXT_IMGPROXY_SOURCE_URL` | Source CMS URL for imgproxy (e.g. `https://cms.thekevshot.com/`) | *(required)* |
 | `NUXT_IMAGE_DOMAINS` | Allowed domains for `@nuxt/image` | `localhost:8787` |
 | `NUXT_PUBLIC_GTAG_ID` | Google Analytics measurement ID | *(disabled if unset)* |
 | `NUXT_RESEND_API_KEY` | Resend API key for sending contact form emails (server-only secret) | *(required)* |

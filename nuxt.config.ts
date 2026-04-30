@@ -9,11 +9,9 @@ export default defineNuxtConfig({
   modules: ['@nuxt/image', 'nuxt-gtag', '@nuxtjs/turnstile', '@nuxtjs/sitemap'],
 
   // Modules configuration
-  // In production Cloudflare Image Resizing handles format negotiation,
-  // responsive widths, and quality. In dev there is no /cdn-cgi/image/
-  // endpoint, so the "none" provider passes the raw CMS URL through
-  // unchanged.  The provider choice is baked at build time so we key off
-  // NODE_ENV rather than a runtime variable.
+  // imgproxy handles image transformation with unsigned /insecure/ URLs.
+  // The custom provider is defined in app/providers/imgproxy.ts and uses
+  // btoa() for browser-compatible base64url encoding (no Node.js crypto needed).
   image: {
     provider: 'imgproxy',
     format: ['webp'],
