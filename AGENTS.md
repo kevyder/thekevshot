@@ -56,37 +56,42 @@ bun run test tests/components/Gallery.spec.ts
 ```
 thekevshot/
 ├── app/                    # Application source code
-│   ├── app.vue             # Root component (includes SiteNavbar + NuxtPage)
+│   ├── app.vue             # Root component (NuxtRouteAnnouncer + SiteNavbar + NuxtPage)
+│   ├── providers/
+│   │   └── imgproxy.ts         # Custom unsigned imgproxy provider for @nuxt/image
 │   ├── components/         # Vue components
 │   │   ├── ContactForm.vue     # Contact form with client validation, thank-you state
 │   │   ├── GalleryImageViewer.vue # Modal lightbox for gallery image viewing
 │   │   ├── PhotoCarousel.vue   # Single-photo carousel with fade transitions
-│   │   └── SiteNavbar.vue      # Navbar with HOME, GALLERY, CONTACT links; desktop social icons, mobile social text links
+│   │   └── SiteNavbar.vue      # Navbar with HOME, GALLERY, ABOUT, WORKSHOPS, CONTACT; desktop social icons, mobile social text links
 │   ├── pages/              # File-based routing
 │   │   ├── contact.vue         # Contact page with SEO meta + ContactForm
-│   │   ├── gallery.vue         # Gallery collection page with 3-column grid (desktop) / 1-column (mobile)
-│   │   ├── gallery/
-│   │   │   └── [id].vue        # Gallery detail page with 4-column image grid + modal viewer
+│   │   ├── gallery/            # Gallery routing group
+│   │   │   ├── index.vue       # Gallery collection page with 3-column grid (desktop) / 1-column (mobile)
+│   │   │   └── [slug].vue      # Gallery detail page with 4-column image grid + modal viewer
+│   │   ├── about.vue           # About page with profile, bio, portrait image
 │   │   ├── index.vue           # Homepage with photo carousel
 │   │   └── links.vue           # Linktree-style page with profile image, subtitle, and social/external links
-│   ├── layouts/            # Page layouts
-│   ├── composables/        # Vue composables (auto-imported)
 │   └── assets/
 │       └── css/
 │           └── main.css        # Global styles (Hind font, reset, focus styles)
-├── public/                 # Static assets (served at root)
+├── public/                 # Static assets (served at root) — includes icon-instagram.svg, icon-tiktok.svg, icon-youtube.svg, og-image.webp
 ├── server/                 # Server routes and middleware (Nitro)
 │   └── api/
 │       ├── contact.post.ts      # Contact form endpoint (Zod, rate limit, Resend)
-│       ├── galleries.get.ts      # Galleries endpoint (proxies CMS, filters published, maps to Gallery[])
+│       ├── galleries.get.ts     # Galleries endpoint (proxies CMS, filters published, maps to Gallery[])
 │       ├── galleries/
-│       │   └── [id].get.ts       # Gallery detail endpoint (proxies CMS by ID, returns GalleryDetail with images)
-│       ├── links.get.ts          # Links endpoint (proxies CMS, filters published, sorts by order)
-│       └── main.get.ts           # Photos endpoint (proxies CMS requests, filters published items)
+│       │   └── [slug].get.ts    # Gallery detail endpoint (proxies CMS by slug, returns GalleryDetail with images)
+│       ├── links.get.ts         # Links endpoint (proxies CMS, filters published, sorts by order)
+│       └── main.get.ts          # Photos endpoint (proxies CMS requests, filters published items)
 ├── shared/                 # Code shared between app and server
-│   └── types/
-│       └── gallery.ts           # Shared gallery types (Photo, GalleryDetail)
+│   ├── types/
+│   │   └── gallery.ts           # Shared gallery types (Photo, GalleryDetail) — imported as @@/shared/types/gallery
+│   └── utils/
+│       └── slug.ts              # Slug generation / validation utilities
 ├── nuxt.config.ts          # Nuxt configuration
+├── wrangler.toml           # Cloudflare Workers deployment config
+├── DESIGN.md               # Design system source of truth (color palette, typography, components)
 └── tsconfig.json           # TypeScript configuration
 ```
 
@@ -365,6 +370,8 @@ The source of truth for environment variables is `.env.template`. Copy it to `.e
 | `NUXT_CONTACT_FROM_ADDRESS` | Sender "From" address for contact emails | *(required)* |
 | `NUXT_PUBLIC_TURNSTILE_SITE_KEY` | Cloudflare Turnstile site key (client-side widget) | *(required)* |
 | `NUXT_TURNSTILE_SECRET_KEY` | Cloudflare Turnstile secret key (server-side verification) | *(required)* |
+| `NUXT_SITE_URL` | Site URL used for sitemap generation and `site.url` config (e.g. `https://thekevshot.com`) | `http://localhost:3000` |
+| `NUXT_SITE_NAME` | Site name used in sitemap and `site.name` config (e.g. `thekevshot.com`) | `thekevshot.com` |
 
 ---
 
@@ -542,7 +549,7 @@ interface CmsGalleryItem {
 
 ## Gallery Detail Page
 
-The `/gallery/[id]` page displays all images from a specific gallery in a responsive grid with a modal lightbox image viewer. Each gallery image can be clicked to open a full-screen viewer with navigation controls.
+The `/gallery/[slug]` page displays all images from a specific gallery in a responsive grid with a modal lightbox image viewer. Each gallery image can be clicked to open a full-screen viewer with navigation controls.
 
 ### Layout & Design
 
@@ -566,7 +573,7 @@ The `/gallery/[id]` page displays all images from a specific gallery in a respon
 
 ### Data Fetching
 
-The page fetches a single gallery's details from `/api/galleries/[id]` endpoint:
+The page fetches a single gallery's details from `/api/galleries/[slug]` endpoint:
 
 ```typescript
 interface Photo {
@@ -585,9 +592,9 @@ interface GalleryDetail {
 }
 ```
 
-### API Endpoint: `/api/galleries/[id].get.ts`
+### API Endpoint: `/api/galleries/[slug].get.ts`
 
-**Purpose:** Fetch detailed gallery data including all images by gallery ID
+**Purpose:** Fetch detailed gallery data including all images by gallery slug
 
 **CMS Endpoint:**
 ```
@@ -611,8 +618,8 @@ interface CmsGalleryItem {
 ```
 
 **Implementation:**
-1. Extract gallery ID from route parameter: `event.context.params?.id`
-2. Fetch from CMS with ID: `GET /api/content/{id}`
+1. Extract gallery slug from route parameter: `event.context.params?.slug`
+2. Fetch from CMS with slug: `GET /api/content/{slug}`
 3. Validate: Only return published galleries (status === 'published')
 4. Map to GalleryDetail interface:
    - `presentationImage = mediaBaseUrl + data.presentationImage` (full URL)
@@ -789,7 +796,7 @@ All links:
 
 ### Layout
 
-- **Navbar:** Minimalist, brand on left, navigation links (HOME, CONTACT, GALLERY, LINKS) and social media icons on right, uppercase text
+- **Navbar:** Minimalist, brand on left, navigation links (HOME, GALLERY, ABOUT, WORKSHOPS, CONTACT, LINKS) and social media icons on right, uppercase text
 - **Homepage:** Full-viewport photo carousel, no scrolling
 - **Carousel:** Single photo with fade transitions, centered caption, arrow controls on sides
 - **Contact page:** Centered form (600px max-width), scrollable, labels above inputs, name fields side-by-side on desktop
