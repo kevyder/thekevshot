@@ -16,7 +16,7 @@
         "zod": "4.4.3",
       },
       "devDependencies": {
-        "@colbymchenry/codegraph": "^0.9.9",
+        "@colbymchenry/codegraph": "0.9.9",
         "@types/node": "25.9.1",
         "autoskills": "0.3.6",
       },
