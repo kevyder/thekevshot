@@ -75,7 +75,7 @@ thekevshot/
 │   └── assets/
 │       └── css/
 │           └── main.css        # Global styles (Hind font, reset, focus styles)
-├── public/                 # Static assets (served at root) — includes icon-instagram.svg, icon-tiktok.svg, icon-youtube.svg, og-image.webp
+├── public/                 # Static assets (served at root) — includes icon-instagram.svg, icon-tiktok.svg, icon-youtube.svg, og-image.webp, llms.txt
 ├── server/                 # Server routes and middleware (Nitro)
 │   └── api/
 │       ├── contact.post.ts      # Contact form endpoint (Zod, rate limit, Resend)

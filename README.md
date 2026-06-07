@@ -64,7 +64,7 @@ server/
 shared/
   types/gallery.ts           # Shared gallery types (Photo, GalleryDetail)
   utils/slug.ts              # Slug utilities
-public/                      # Static assets
+public/                      # Static assets (llms.txt, icons, og-image.webp)
 nuxt.config.ts
 wrangler.toml                # Cloudflare Workers config
 DESIGN.md                    # Design system source of truth
