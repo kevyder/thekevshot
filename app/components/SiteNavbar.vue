@@ -2,7 +2,7 @@
 const instagramUrl = 'https://instagram.com/thekevshot'
 const tiktokUrl = 'https://tiktok.com/@thekevshot'
 const youtubeUrl = 'https://youtube.com/@thekevshot'
-const workshopsUrl = 'https://bgtspc.com/'
+const workshopsUrl = 'https://workshops.thekevshot.com/'
 
 const menuOpen = ref(false)
 const route = useRoute()
